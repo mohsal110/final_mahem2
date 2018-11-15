@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mohsal.final_mahem2">
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".other.Splash_Sc"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".other.Page1" />
+        <activity android:name=".OffFinder.Takhfif_Show" />
+        <activity android:name=".Groups.Group" />
+        <activity android:name=".Groups.Estekhdami" />
+        <activity android:name=".Groups.Amlak" />
+        <activity android:name=".Groups.Amlak_HomeSell" />
+        <activity android:name=".Groups.Amlak_HomeRent" />
+        <activity android:name=".Groups.Amlak_OfficeSell" />
+        <activity android:name=".Groups.Amlak_OfficeRent" />
+        <activity android:name=".Groups.Naghlieh" />
+        <activity android:name=".Groups.Electric" />
+        <activity android:name=".Groups.Electric_Tablet" />
+        <activity android:name=".Groups.Electric_Net" />
+        <activity android:name=".Groups.Electric_soti" />
+        <activity android:name=".Groups.Home_EQ" />
+        <activity android:name=".Groups.Home_Kitchen" />
+        <activity android:name=".Groups.Home_Design" />
+        <activity android:name=".Groups.Khadamat" />
+        <activity android:name=".Groups.Khadamat_teach" />
+        <activity android:name=".Groups.Khadamat_computer" />
+        <activity android:name=".Groups.Tajhizat" />
+        <activity android:name=".Groups.Tajhizat_tajhizat" />
+        <activity android:name=".Groups.Sargarmi" />
+        <activity android:name=".Groups.Sargarmi_music" />
+        <activity android:name=".Groups.Sargarmi_book" />
+        <activity android:name=".Groups.Personal" />
+        <activity android:name=".MenuItems.Menu1" />
+        <activity android:name=".MenuItems.AboutUs" />
+        <activity android:name=".MenuItems.ContactUs" />
+        <activity android:name=".MenuItems.Laws" />
+        <activity android:name=".MenuItems.Register" />
+        <activity android:name=".JobBank.JobBankMenu" />
+        <activity android:name=".MenuItems.Off_Finder" />
+        <activity android:name=".MenuItems.CodeVerification" />
+        <activity android:name=".MenuItems.Setting" />
+        <activity android:name=".Add.SabtAgahi" />
+        <activity android:name=".Add.SabtAgahi_other" />
+        <activity android:name=".Add.SabtAgahi_Takhfif" />
+        <activity android:name=".Add.SabtAgahi_Estekhdam" />
+        <activity android:name=".Add.SabtAgahi_Car" />
+        <activity android:name=".Add.SabtAgahi_Amlak_Home" />
+        <activity android:name=".Add.SabtAgahi_Amlak_Office" />
+        <activity
+            android:name=".Search_Filter.Search"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Add.SabtAgahi_Home_Office" />
+        <activity android:name=".Search_Filter.Filter_group" />
+        <activity android:name=".Search_Filter.Filter_Estekhdami" />
+        <activity android:name=".Search_Filter.Filter_Khodro" />
+        <activity android:name=".Search_Filter.Filter_Home" />
+        <activity android:name=".Search_Filter.Collections" />
+        <activity android:name=".Search_Filter.Filter_Estekhdami_monshi_fani" />
+        <activity android:name=".Search_Filter.Filter_other" />
+        <activity android:name=".OffFinder.Bottomsheet_All_takhfif" />
+        <activity android:name=".OffFinder.BottomSheetMahem" />
+        <activity android:name=".MenuItems.Contact" />
+        <activity android:name=".MenuItems.Ads_show" />
+        <activity
+            android:name=".Search_Filter.Ads"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Search_Filter.Management_Panel"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Search_Filter.Estekhdami_menu" />
+        <activity android:name=".JobBank.JobList" />
+        <activity android:name=".JobBank.JobBank_Sabt" />
+        <activity android:name=".OffFinder.Off" />
+        <activity android:name=".OffFinder.Near_me" />
+        <activity android:name=".OffFinder.map"></activity>
+    </application>
+
+</manifest>
