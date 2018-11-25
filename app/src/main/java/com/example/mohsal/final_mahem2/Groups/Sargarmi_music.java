@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Sargarmi_music extends AppCompatActivity implements View.OnClickListener {
+public class Sargarmi_music extends AppCompatActivity  {
 Button piano,saz_badi,guitar,dram,violon,sonati;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,25 +22,36 @@ Button piano,saz_badi,guitar,dram,violon,sonati;
 
 
         piano=(Button)findViewById(R.id.btn1);
-        piano.setOnClickListener(this);
+        piano.setOnClickListener(new IntentClick("104"));
         saz_badi=(Button)findViewById(R.id.btn2);
-        saz_badi.setOnClickListener(this);
+        saz_badi.setOnClickListener(new IntentClick("105"));
         guitar=(Button)findViewById(R.id.btn3);
-        guitar.setOnClickListener(this);
+        guitar.setOnClickListener(new IntentClick("106"));
         dram=(Button)findViewById(R.id.btn4);
-        dram.setOnClickListener(this);
+        dram.setOnClickListener(new IntentClick("107"));
         violon=(Button)findViewById(R.id.btn5);
-        violon.setOnClickListener(this);
+        violon.setOnClickListener(new IntentClick("108"));
         sonati=(Button)findViewById(R.id.btn6);
-        sonati.setOnClickListener(this);
+        sonati.setOnClickListener(new IntentClick("109"));
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
 
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
     }
+
 }

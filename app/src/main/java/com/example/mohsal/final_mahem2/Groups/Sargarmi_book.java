@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Sargarmi_book extends AppCompatActivity implements View.OnClickListener {
+public class Sargarmi_book extends AppCompatActivity {
 Button teach,religion,history,literary,magazine,other;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,24 +22,35 @@ Button teach,religion,history,literary,magazine,other;
 
 
         teach=(Button)findViewById(R.id.btn1);
-        teach.setOnClickListener(this);
+        teach.setOnClickListener(new IntentClick("98"));
         religion=(Button)findViewById(R.id.btn2);
-        religion.setOnClickListener(this);
+        religion.setOnClickListener(new IntentClick("99"));
         history=(Button)findViewById(R.id.btn3);
-        history.setOnClickListener(this);
+        history.setOnClickListener(new IntentClick("100"));
         literary=(Button)findViewById(R.id.btn4);
-        literary.setOnClickListener(this);
+        literary.setOnClickListener(new IntentClick("101"));
         magazine=(Button)findViewById(R.id.btn5);
-        magazine.setOnClickListener(this);
+        magazine.setOnClickListener(new IntentClick("102"));
         other=(Button)findViewById(R.id.btn6);
-        other.setOnClickListener(this);
+        other.setOnClickListener(new IntentClick("103"));
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
     }
+
 }

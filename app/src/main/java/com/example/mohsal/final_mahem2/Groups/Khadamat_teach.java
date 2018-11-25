@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Khadamat_teach extends AppCompatActivity implements View.OnClickListener {
+public class Khadamat_teach extends AppCompatActivity  {
 Button Language,school,software,art,sport,moshaver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,23 +21,33 @@ Button Language,school,software,art,sport,moshaver;
 
 
         Language=(Button)findViewById(R.id.btn1);
-        Language.setOnClickListener(this);
+        Language.setOnClickListener(new IntentClick("75"));
         school=(Button)findViewById(R.id.btn2);
-        school.setOnClickListener(this);
+        school.setOnClickListener(new IntentClick("76"));
         software=(Button)findViewById(R.id.btn3);
-        software.setOnClickListener(this);
+        software.setOnClickListener(new IntentClick("77"));
         art=(Button)findViewById(R.id.btn4);
-        art.setOnClickListener(this);
+        art.setOnClickListener(new IntentClick("78"));
         sport=(Button)findViewById(R.id.btn5);
-        sport.setOnClickListener(this);
+        sport.setOnClickListener(new IntentClick("79"));
         moshaver=(Button)findViewById(R.id.btn6);
-        moshaver.setOnClickListener(this);
+        moshaver.setOnClickListener(new IntentClick("80"));
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
     }
+
 }

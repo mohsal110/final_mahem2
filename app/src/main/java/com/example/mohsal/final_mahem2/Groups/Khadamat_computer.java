@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Khadamat_computer extends AppCompatActivity implements View.OnClickListener {
+public class Khadamat_computer extends AppCompatActivity {
 Button web,net,pc,mobile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,19 +21,30 @@ Button web,net,pc,mobile;
 
 
         web=(Button)findViewById(R.id.btn1);
-        web.setOnClickListener(this);
+        web.setOnClickListener(new IntentClick("71"));
         net=(Button)findViewById(R.id.btn2);
-        net.setOnClickListener(this);
+        net.setOnClickListener(new IntentClick("72"));
         pc=(Button)findViewById(R.id.btn3);
-        pc.setOnClickListener(this);
+        pc.setOnClickListener(new IntentClick("73"));
         mobile=(Button)findViewById(R.id.btn4);
-        mobile.setOnClickListener(this);
+        mobile.setOnClickListener(new IntentClick("74"));
+
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
     }
+
 }

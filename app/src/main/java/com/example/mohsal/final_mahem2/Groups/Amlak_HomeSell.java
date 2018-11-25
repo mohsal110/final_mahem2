@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Amlak_HomeSell extends AppCompatActivity implements View.OnClickListener {
+public class Amlak_HomeSell extends AppCompatActivity {
 Button aparteman,home,zamin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,19 +20,28 @@ Button aparteman,home,zamin;
 
 
         aparteman=(Button)findViewById(R.id.btn1);
-        aparteman.setOnClickListener(this);
+        aparteman.setOnClickListener(new IntentClick("3"));
         home=(Button)findViewById(R.id.btn2);
-        home.setOnClickListener(this);
+        home.setOnClickListener(new IntentClick("4"));
         zamin=(Button)findViewById(R.id.btn3);
-        zamin.setOnClickListener(this);
+        zamin.setOnClickListener(new IntentClick("5"));
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+    class IntentClick implements View.OnClickListener{
+        private String Id;
+        public IntentClick(String id)
+        {
+            Id=id;
+        }
+        @Override
+        public void onClick(View view) {
+            Intent i=new Intent(getBaseContext(),Ads.class);
+            i.putExtra("id",Id);
+            startActivity(i);
+        }
     }
+
 
 }

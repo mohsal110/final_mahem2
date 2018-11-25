@@ -49,87 +49,39 @@ Button pazirayi,beauty,clean,asbab_keshi,nurse,decor,repair,teach,computer,trans
                 startActivity(i);
             }
         });
-        pazirayi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        beauty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
 
-        clean.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        asbab_keshi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        nurse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
+        pazirayi.setOnClickListener(new IntentClick("60"));
+        beauty.setOnClickListener(new IntentClick("61"));
+        clean.setOnClickListener(new IntentClick("62"));
+        asbab_keshi.setOnClickListener(new IntentClick("63"));
+        nurse.setOnClickListener(new IntentClick("64"));
+        decor.setOnClickListener(new IntentClick("65"));
+        repair.setOnClickListener(new IntentClick("66"));
+        translate.setOnClickListener(new IntentClick("67"));
+        maali.setOnClickListener(new IntentClick("68"));
+        graphic.setOnClickListener(new IntentClick("69"));
+        other.setOnClickListener(new IntentClick("70"));
 
-       decor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        repair.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        translate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
 
-        maali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        graphic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        other.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
+
+
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
+
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
+    }
+
 }

@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Tajhizat_tajhizat extends AppCompatActivity implements View.OnClickListener{
+public class Tajhizat_tajhizat extends AppCompatActivity {
 Button shop,burbershop,office,industry,cofe,other;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,24 +22,34 @@ Button shop,burbershop,office,industry,cofe,other;
 
 
         shop=(Button)findViewById(R.id.btn1);
-        shop.setOnClickListener(this);
+        shop.setOnClickListener(new IntentClick("111"));
         burbershop=(Button)findViewById(R.id.btn2);
-        burbershop.setOnClickListener(this);
+        burbershop.setOnClickListener(new IntentClick("112"));
         office=(Button)findViewById(R.id.btn3);
-        office.setOnClickListener(this);
+        office.setOnClickListener(new IntentClick("113"));
         industry=(Button)findViewById(R.id.btn4);
-        industry.setOnClickListener(this);
+        industry.setOnClickListener(new IntentClick("114"));
         cofe=(Button)findViewById(R.id.btn5);
-        cofe.setOnClickListener(this);
+        cofe.setOnClickListener(new IntentClick("115"));
         other=(Button)findViewById(R.id.btn6);
-        other.setOnClickListener(this);
+        other.setOnClickListener(new IntentClick("116"));
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
     }
+
 }

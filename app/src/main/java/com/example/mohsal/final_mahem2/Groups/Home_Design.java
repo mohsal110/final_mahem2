@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Home_Design extends AppCompatActivity implements View.OnClickListener {
+public class Home_Design extends AppCompatActivity  {
 Button carpet,chair,lostr,commode,parde,bed,decor,TV_desk,fan,other;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,32 +21,42 @@ Button carpet,chair,lostr,commode,parde,bed,decor,TV_desk,fan,other;
 
 
         carpet=(Button)findViewById(R.id.btn1);
-        carpet.setOnClickListener(this);
+        carpet.setOnClickListener(new IntentClick("44"));
         chair=(Button)findViewById(R.id.btn2);
-        chair.setOnClickListener(this);
+        chair.setOnClickListener(new IntentClick("45"));
         lostr=(Button)findViewById(R.id.btn3);
-        lostr.setOnClickListener(this);
+        lostr.setOnClickListener(new IntentClick("46"));
         commode=(Button)findViewById(R.id.btn4);
-        commode.setOnClickListener(this);
+        commode.setOnClickListener(new IntentClick("47"));
         parde=(Button)findViewById(R.id.btn5);
-        parde.setOnClickListener(this);
+        parde.setOnClickListener(new IntentClick("48"));
         bed=(Button)findViewById(R.id.btn6);
-        bed.setOnClickListener(this);
+        bed.setOnClickListener(new IntentClick("49"));
         decor=(Button)findViewById(R.id.btn7);
-        decor.setOnClickListener(this);
+        decor.setOnClickListener(new IntentClick("50"));
         TV_desk=(Button)findViewById(R.id.btn8);
-        TV_desk.setOnClickListener(this);
+        TV_desk.setOnClickListener(new IntentClick("51"));
         fan=(Button)findViewById(R.id.btn9);
-        fan.setOnClickListener(this);
+        fan.setOnClickListener(new IntentClick("52"));
         other=(Button)findViewById(R.id.btn10);
-        other.setOnClickListener(this);
+        other.setOnClickListener(new IntentClick("53"));
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
     }
+
 }

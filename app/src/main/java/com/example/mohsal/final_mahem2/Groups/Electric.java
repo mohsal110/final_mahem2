@@ -41,28 +41,34 @@ Button tablet,net,soti,console,other;
                 startActivity(i);
             }
         });
+
         net.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        console.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        other.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
+                Intent i=new Intent(Electric.this,Electric_Net.class);
+                startActivity(i);
             }
         });
 
+        console.setOnClickListener(new IntentClick("14"));
+        other.setOnClickListener(new IntentClick("15"));
+
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
+
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
+    }
+
 }

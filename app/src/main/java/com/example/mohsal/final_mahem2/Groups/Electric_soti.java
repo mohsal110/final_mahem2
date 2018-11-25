@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Electric_soti extends AppCompatActivity implements View.OnClickListener{
+public class Electric_soti extends AppCompatActivity {
 Button camera,System_soti,TV,DVD,other;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,25 +19,33 @@ Button camera,System_soti,TV,DVD,other;
 
 
 
-
-
         camera=(Button)findViewById(R.id.btn1);
-        camera.setOnClickListener(this);
+        camera.setOnClickListener(new IntentClick("20"));
         System_soti=(Button)findViewById(R.id.btn2);
-        System_soti.setOnClickListener(this);
+        System_soti.setOnClickListener(new IntentClick("21"));
         TV=(Button)findViewById(R.id.btn3);
-        TV.setOnClickListener(this);
+        TV.setOnClickListener(new IntentClick("22"));
         DVD=(Button)findViewById(R.id.btn4);
-        DVD.setOnClickListener(this);
+        DVD.setOnClickListener(new IntentClick("23"));
         other=(Button)findViewById(R.id.btn5);
-        other.setOnClickListener(this);
+        other.setOnClickListener(new IntentClick("24"));
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
     }
+
 }

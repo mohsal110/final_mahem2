@@ -43,49 +43,31 @@ Button cycle,sport,travel,asbab_bazi,music,book,pet,other;
                 startActivity(i);
             }
         });
-        cycle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        sport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        travel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        asbab_bazi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        pet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
-        other.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getBaseContext(), Ads.class);
-                startActivity(intent);
-            }
-        });
+
+        cycle.setOnClickListener(new IntentClick("92"));
+        sport.setOnClickListener(new IntentClick("93"));
+        travel.setOnClickListener(new IntentClick("94"));
+        asbab_bazi.setOnClickListener(new IntentClick("95"));
+        pet.setOnClickListener(new IntentClick("96"));
+        other.setOnClickListener(new IntentClick("97"));
+
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
+
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
+    }
+
 }

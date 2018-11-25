@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Personal extends AppCompatActivity implements View.OnClickListener {
+public class Personal extends AppCompatActivity {
 Button clothes,watch,health,child_clothes,other;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,26 +19,35 @@ Button clothes,watch,health,child_clothes,other;
 
 
 
-
-
         clothes=(Button)findViewById(R.id.btn1);
-        clothes.setOnClickListener(this);
+        clothes.setOnClickListener(new IntentClick("87"));
         watch=(Button)findViewById(R.id.btn2);
-        watch.setOnClickListener(this);
+        watch.setOnClickListener(new IntentClick("88"));
         health=(Button)findViewById(R.id.btn3);
-        health.setOnClickListener(this);
+        health.setOnClickListener(new IntentClick("89"));
         child_clothes=(Button)findViewById(R.id.btn4);
-        child_clothes.setOnClickListener(this);
+        child_clothes.setOnClickListener(new IntentClick("90"));
         other=(Button)findViewById(R.id.btn5);
-        other.setOnClickListener(this);
+        other.setOnClickListener(new IntentClick("91"));
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
 
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
     }
+
 }

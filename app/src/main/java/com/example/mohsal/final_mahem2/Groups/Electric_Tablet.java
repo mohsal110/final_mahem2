@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Electric_Tablet extends AppCompatActivity implements View.OnClickListener {
+public class Electric_Tablet extends AppCompatActivity {
 Button mobile,tablet,LavazemJanebi,simcard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,19 +22,31 @@ Button mobile,tablet,LavazemJanebi,simcard;
 
 
         mobile=(Button)findViewById(R.id.btn1);
-        mobile.setOnClickListener(this);
+        mobile.setOnClickListener(new IntentClick("25"));
         tablet=(Button)findViewById(R.id.btn2);
-        tablet.setOnClickListener(this);
+        tablet.setOnClickListener(new IntentClick("26"));
         LavazemJanebi=(Button)findViewById(R.id.btn3);
-        LavazemJanebi.setOnClickListener(this);
+        LavazemJanebi.setOnClickListener(new IntentClick("27"));
         simcard=(Button)findViewById(R.id.btn4);
-        simcard.setOnClickListener(this);
+        simcard.setOnClickListener(new IntentClick("28"));
+
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
     }
+
 }

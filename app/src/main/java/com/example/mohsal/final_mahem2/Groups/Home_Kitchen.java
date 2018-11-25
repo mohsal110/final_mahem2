@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Home_Kitchen extends AppCompatActivity implements View.OnClickListener{
+public class Home_Kitchen extends AppCompatActivity {
 Button freezer,gas,wash_cloth,food,wash_dish,other;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,24 +22,35 @@ Button freezer,gas,wash_cloth,food,wash_dish,other;
 
 
         freezer=(Button)findViewById(R.id.btn1);
-        freezer.setOnClickListener(this);
+        freezer.setOnClickListener(new IntentClick("54"));
         gas=(Button)findViewById(R.id.btn2);
-        gas.setOnClickListener(this);
+        gas.setOnClickListener(new IntentClick("55"));
         wash_cloth=(Button)findViewById(R.id.btn3);
-        wash_cloth.setOnClickListener(this);
+        wash_cloth.setOnClickListener(new IntentClick("56"));
         food=(Button)findViewById(R.id.btn4);
-        food.setOnClickListener(this);
+        food.setOnClickListener(new IntentClick("57"));
         wash_dish=(Button)findViewById(R.id.btn5);
-        wash_dish.setOnClickListener(this);
+        wash_dish.setOnClickListener(new IntentClick("58"));
         other=(Button)findViewById(R.id.btn6);
-        other.setOnClickListener(this);
+        other.setOnClickListener(new IntentClick("59"));
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
     }
+
 }

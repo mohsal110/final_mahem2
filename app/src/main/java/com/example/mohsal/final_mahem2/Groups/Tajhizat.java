@@ -34,11 +34,16 @@ Button tajhizat,omde;
         omde.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Intent intent = new Intent(getBaseContext(), Ads.class);
-                                        startActivity(intent);
-                                    }
+          Intent i = new Intent(getBaseContext(), Ads.class);
+          i.putExtra("id", "110");
+          startActivity(i);
+              }
                                 });
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
+
+
+
+
 }

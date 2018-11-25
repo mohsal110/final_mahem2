@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.mohsal.final_mahem2.R;
 import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
-public class Naghlieh extends AppCompatActivity implements View.OnClickListener {
+public class Naghlieh extends AppCompatActivity  {
 Button savari,sangin,motor,yadaki,keshavarzi,other;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,28 +18,36 @@ Button savari,sangin,motor,yadaki,keshavarzi,other;
         setContentView(R.layout.activity_naghlieh);
 
 
-
-
-
         savari=(Button)findViewById(R.id.btn1);
-        savari.setOnClickListener(this);
+        savari.setOnClickListener(new IntentClick("81"));
         sangin=(Button)findViewById(R.id.btn2);
-        sangin.setOnClickListener(this);
+        sangin.setOnClickListener(new IntentClick("82"));
         motor=(Button)findViewById(R.id.btn3);
-        motor.setOnClickListener(this);
+        motor.setOnClickListener(new IntentClick("83"));
         yadaki=(Button)findViewById(R.id.btn4);
-        yadaki.setOnClickListener(this);
+        yadaki.setOnClickListener(new IntentClick("84"));
         keshavarzi=(Button)findViewById(R.id.btn5);
-        keshavarzi.setOnClickListener(this);
+        keshavarzi.setOnClickListener(new IntentClick("85"));
         other=(Button)findViewById(R.id.btn6);
-        other.setOnClickListener(this);
+        other.setOnClickListener(new IntentClick("86"));
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
-    @Override
-    public void onClick(View v) {
 
-        Intent intent=new Intent(getBaseContext(), Ads.class);
-        startActivity(intent);
+
+    class IntentClick implements View.OnClickListener {
+        private String Id;
+
+        public IntentClick(String id) {
+            Id = id;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), Ads.class);
+            i.putExtra("id", Id);
+            startActivity(i);
+        }
     }
+
 }

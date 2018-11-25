@@ -2,6 +2,8 @@ package com.example.mohsal.final_mahem2.Groups;
 
 import android.content.Intent;
 import com.example.mohsal.final_mahem2.R;
+import com.example.mohsal.final_mahem2.Search_Filter.Ads;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,4 +42,7 @@ Button kitchen,design;
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
+
+
+
 }

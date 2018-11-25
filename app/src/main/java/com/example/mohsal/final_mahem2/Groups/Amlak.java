@@ -20,13 +20,14 @@ Button home_sell,home_rent,office_sell,office_rent,aghd,other;
 
 
 
-
         home_sell=(Button)findViewById(R.id.btn1);
         home_rent=(Button)findViewById(R.id.btn2);
         office_sell=(Button)findViewById(R.id.btn3);
         office_rent=(Button)findViewById(R.id.btn4);
         aghd=(Button)findViewById(R.id.btn5);
         other=(Button)findViewById(R.id.btn6);
+
+
 
         home_sell.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,20 +58,26 @@ Button home_sell,home_rent,office_sell,office_rent,aghd,other;
                 startActivity(i);
             }
         });
-        aghd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(getBaseContext(),Ads.class);
-                startActivity(i);
-            }
-        });
-        other.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(getBaseContext(),Ads.class);
-                startActivity(i);
-            }
-        });
+
+        aghd.setOnClickListener(new IntentClick("1"));
+
+        other.setOnClickListener(new IntentClick("2"));
+
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
+    }
+
+
+    class IntentClick implements View.OnClickListener{
+        private String Id;
+      public IntentClick(String id)
+        {
+            Id=id;
+        }
+        @Override
+        public void onClick(View view) {
+            Intent i=new Intent(getBaseContext(),Ads.class);
+            i.putExtra("id",Id);
+            startActivity(i);
+        }
     }
 }
