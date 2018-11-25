@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,10 +35,12 @@ public class Setting extends AppCompatActivity {
     TextView city_1,city_2,city_3,city_4,city_5,city_6,city_7,city_8,city_9
             ,city_10,city_11,city_12,city_13,city_14;
     PopupWindow City_Layout;
-    RadioButton per,eng;
+    RadioGroup lang;
     int image_select;
     final int CAMERA_PIC_REQUEST=234;
     private String selected_city;
+
+    String language;
 
     ImageView logo;
     RelativeLayout F;
@@ -55,8 +58,8 @@ public class Setting extends AppCompatActivity {
         city=(EditText)findViewById(R.id.T);
         logo=(ImageView)findViewById(R.id.ic_logo);
 
-        eng=(RadioButton) findViewById(R.id.eng);
-        per=(RadioButton) findViewById(R.id.per);
+       lang=(RadioGroup)findViewById(R.id.lang);
+       language=((RadioButton)findViewById(lang.getCheckedRadioButtonId())).getText().toString();
 
         city.setOnClickListener(new View.OnClickListener() {
             @Override
