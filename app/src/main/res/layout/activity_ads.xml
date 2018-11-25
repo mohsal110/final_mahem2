@@ -65,7 +65,8 @@
             android:layout_alignParentTop="true"
             android:hint="جستجو برای..."
             android:textSize="15sp"
-            android:gravity="right"/>
+            android:gravity="right"
+            android:lines="1"/>
 
     </RelativeLayout>
 

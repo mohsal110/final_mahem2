@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:gravity="right"
         >
 
@@ -18,11 +18,12 @@
             android:layout_height="match_parent"
             android:textColor="@android:color/white"
             android:id="@+id/title"
-            android:textSize="23dp"
+            android:textSize="20dp"
             android:text="تماس با ما"
             android:gravity="center|bottom"
             android:paddingBottom="8dp"
             android:paddingRight="3dp"/>
+
         <ImageView
             android:id="@+id/ic_logo"
             android:layout_width="60dp"
@@ -44,7 +45,7 @@
             android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/logo" />
+            android:src="@drawable/img_header" />
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"

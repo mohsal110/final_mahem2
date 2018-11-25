@@ -6,18 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".other.Page1"
     >
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        >
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:gravity="right"
+            android:layout_alignParentTop="true"
+            android:id="@+id/toolbar"
             >
 
             <TextView
@@ -51,30 +50,23 @@
                 android:src="@mipmap/ic_launcher_foreground_location" />
 
         </RelativeLayout>
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RelativeLayout
 
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
+                android:layout_height="match_parent"
+                android:paddingBottom="50dp"
+                android:layout_below="@+id/toolbar"
+                android:orientation="vertical"
+                >
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/image"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
-
+                    android:layout_height="match_parent"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
-
-
-
-
-
-
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="67"/>
 
 
                 <RelativeLayout
@@ -83,7 +75,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/image"
                     android:id="@+id/l1"
-                    android:background="@drawable/background_borders">
+                    android:background="@drawable/background_borders"
+                    >
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -106,12 +99,12 @@
                     android:id="@+id/List1"
                     android:layout_below="@id/l1"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/background_borders"
                     tools:ignore="NotSibling"
                     android:orientation="horizontal"
                     android:scrollbars="horizontal"
-                    ></android.support.v7.widget.RecyclerView>
+                    android:layout_weight="100"></android.support.v7.widget.RecyclerView>
 
 
                 <RelativeLayout
@@ -132,25 +125,23 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:text="  ادامه ی لیست   "
-                        android:textSize="17dp"/>
+                        android:textSize="17dp"
+                        />
 
                 </RelativeLayout>
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/List2"
                     android:layout_below="@id/l2"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/background_borders"
                     tools:ignore="NotSibling"
                     android:orientation="vertical"
-                    android:layout_marginBottom="50dp"></android.support.v7.widget.RecyclerView>
+                    android:layout_weight="100"
+                    ></android.support.v7.widget.RecyclerView>
+            </LinearLayout>
 
-
-
-            </RelativeLayout>
-        </ScrollView>
-
-    </LinearLayout></ScrollView>
+    </RelativeLayout>
     <include
         layout="@layout/bottom_navigation"
         android:id="@+id/rr"
