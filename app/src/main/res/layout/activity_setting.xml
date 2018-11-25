@@ -60,22 +60,25 @@
                 android:textColor="@android:color/black"
                 android:layout_marginTop="10dp"/>
         </RelativeLayout>
-        <RelativeLayout
+        <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/lang">
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="    English  "
+                android:text="English "
                 android:textSize="16dp"
                 android:checked="false"
                 android:id="@+id/eng"
                 android:layout_weight="1"
                 android:gravity="right"
                 android:paddingRight="20dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="50dp"/>
+               android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:foregroundGravity="left|bottom"/>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,7 +91,7 @@
                 android:gravity="right"
                 android:layout_marginRight="50dp"
                 android:focusable="true"/>
-        </RelativeLayout>
+        </RadioGroup>
 
         <RelativeLayout
         android:layout_width="match_parent"
