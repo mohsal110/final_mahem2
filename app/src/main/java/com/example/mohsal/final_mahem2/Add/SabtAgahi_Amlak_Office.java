@@ -292,8 +292,8 @@ public class SabtAgahi_Amlak_Office extends AppCompatActivity {
 
     public void Type_map()
     {
-        Type_1=(TextView)Type.findViewById(R.id.Tt1);
-        Type_2=(TextView)Type.findViewById(R.id.Tt2);
+        Type_1=(TextView)TypeLayout.findViewById(R.id.Tt1);
+        Type_2=(TextView)TypeLayout.findViewById(R.id.Tt2);
 
 
 

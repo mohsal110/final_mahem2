@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.mohsal.final_mahem2.R;
+import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
 public class SabtAgahi extends AppCompatActivity {
     Button estekhdam,takhfifYab,amlak,naghlie,electric,home,khadamat,tajhizat,sargarmi,personal;
@@ -61,7 +62,30 @@ public class SabtAgahi extends AppCompatActivity {
             }
         });
 
+        electric.setOnClickListener(new IntentClick(electric.getText().toString()));
+        home.setOnClickListener(new IntentClick(home.getText().toString()));
+        khadamat.setOnClickListener(new IntentClick(khadamat.getText().toString()));
+        tajhizat.setOnClickListener(new IntentClick(tajhizat.getText().toString()));
+        sargarmi.setOnClickListener(new IntentClick(sargarmi.getText().toString()));
+        personal.setOnClickListener(new IntentClick(personal.getText().toString()));
+
         Toast.makeText(this,getLocalClassName().toString()+"\nNiky",Toast.LENGTH_LONG).show();
 
+    }
+
+
+    class IntentClick implements View.OnClickListener {
+        private String group;
+
+        public IntentClick(String Group) {
+            group = Group;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(getBaseContext(), SabtAgahi_other.class);
+            i.putExtra("group", group);
+            startActivity(i);
+        }
     }
 }

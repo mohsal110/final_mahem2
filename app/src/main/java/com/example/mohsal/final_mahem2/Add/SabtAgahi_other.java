@@ -77,6 +77,9 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
             });
         }
 
+        Intent ii=getIntent();
+       Group.setText(ii.getStringExtra("group"));
+
         Gheimat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +92,8 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
 
             }
         });
+
+
 
         Type.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,13 +128,7 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
 
         Toast.makeText(this,getLocalClassName().toString()+"\nNiky",Toast.LENGTH_LONG).show();
 
-        Group.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(SabtAgahi_other.this,SabtAgahi.class);
-                startActivity(i);
-            }
-        });
+
     }
 
     public void tt(String s)
