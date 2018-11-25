@@ -3,12 +3,13 @@ package com.example.mohsal.final_mahem2.other;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import com.example.mohsal.final_mahem2.R;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.mohsal.final_mahem2.R;
 
 public class Splash_Sc extends AppCompatActivity {
     ImageView img;
@@ -25,6 +26,7 @@ public class Splash_Sc extends AppCompatActivity {
         } else {
            tran(Page1.class);
         }
+
     }
 
     void tran(final Class c) {

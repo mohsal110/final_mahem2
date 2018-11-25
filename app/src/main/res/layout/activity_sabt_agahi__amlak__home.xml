@@ -80,60 +80,62 @@
             android:orientation="horizontal"
             android:padding="5dp">
 
-            <Button
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/button"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+
+                android:clickable="true"
+                android:padding="2dp"
                 android:id="@+id/c1"
+                />
+
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/button"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
-                android:background="@drawable/button"
-                android:clickable="true"
-                android:drawableBottom="@drawable/icons88"
-                android:padding="2dp" />
 
-            <Button
+                android:clickable="true"
+                android:padding="2dp"
                 android:id="@+id/c2"
+                />
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/button"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
-                android:background="@drawable/button"
-                android:clickable="true"
-                android:drawableBottom="@drawable/icons88"
-                android:padding="2dp" />
 
-            <Button
+                android:clickable="true"
+                android:padding="2dp"
                 android:id="@+id/c3"
+                />
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/button"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
-                android:background="@drawable/button"
-                android:clickable="true"
-                android:drawableBottom="@drawable/icons88"
-                android:padding="2dp" />
 
-            <Button
+                android:clickable="true"
+                android:padding="2dp"
                 android:id="@+id/c4"
+                />
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/button"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
-                android:background="@drawable/button"
-                android:clickable="true"
-                android:drawableBottom="@drawable/icons88"
-                android:padding="2dp" />
 
-            <Button
-                android:id="@+id/c5"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:background="@drawable/button"
                 android:clickable="true"
-                android:drawableBottom="@drawable/icons88"
-                android:padding="2dp" />
+                android:padding="2dp"
+                android:id="@+id/c5"
+                />
 
         </LinearLayout>
 

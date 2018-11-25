@@ -78,7 +78,7 @@
             android:background="@color/colorPrimary"
             android:padding="5dp"
             android:orientation="horizontal">
-            <Button
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/button"
@@ -90,46 +90,46 @@
                 android:id="@+id/c1"
                 />
 
-            <Button
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/button"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
-                android:drawableBottom="@drawable/icons88"
+
                 android:clickable="true"
                 android:padding="2dp"
                 android:id="@+id/c2"
                 />
-            <Button
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/button"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
-                android:drawableBottom="@drawable/icons88"
+
                 android:clickable="true"
                 android:padding="2dp"
                 android:id="@+id/c3"
                 />
-            <Button
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/button"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
-                android:drawableBottom="@drawable/icons88"
+
                 android:clickable="true"
                 android:padding="2dp"
                 android:id="@+id/c4"
                 />
-            <Button
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/button"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
-                android:drawableBottom="@drawable/icons88"
+
                 android:clickable="true"
                 android:padding="2dp"
                 android:id="@+id/c5"

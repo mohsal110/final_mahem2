@@ -1,11 +1,12 @@
 package com.example.mohsal.final_mahem2.Add;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -37,12 +38,14 @@ public class SabtAgahi_Car extends AppCompatActivity {
     TextView Type_1,Type_2,Type_3,agahiD_1,agahiD_2,Gh_1,Gh_2,Gh_3,Gh_4,Sh_1,Sh_2,Sh_3,Sh_4,Sh_5,Sh_6,Sh_7
             ,naghd_1,naghd_2;
     CheckBox rules,chat,email_check;
-    Button send,cam1,cam2,cam3,cam4,cam5,ok_call;
+    ImageView cam1,cam2,cam3,cam4,cam5;
+    Button send,ok_call;
     PopupWindow Type_Layout,Call_Layout,Gheimat_Layout,agahiD_Layout,Shasy_type_Layout,Naghd_Layout;
-    ArrayList<Button> btns;
+    ArrayList<ImageView> Cameras;
     ImageView map_img;
     private Bitmap yourSelectedImage;
     private String searchingLocation;
+
 
     int pic=0;
     private int IdPic=0;
@@ -53,6 +56,7 @@ public class SabtAgahi_Car extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sabt_agahi__car);
+
 
 
         Group=(EditText)findViewById(R.id.T1);
@@ -72,30 +76,33 @@ public class SabtAgahi_Car extends AppCompatActivity {
         map_img=(ImageView)findViewById(R.id.map_img);
 
 
-        send=(Button)findViewById(R.id.send);
-        cam1=(Button)findViewById(R.id.c1);
-        cam2=(Button)findViewById(R.id.c2);
-        cam3=(Button)findViewById(R.id.c3);
-        cam4=(Button)findViewById(R.id.c4);
-        cam5=(Button)findViewById(R.id.c5);
+        send=findViewById(R.id.send);
+        cam1=findViewById(R.id.c1);
+        cam2=findViewById(R.id.c2);
+        cam3=findViewById(R.id.c3);
+        cam4=findViewById(R.id.c4);
+        cam5=findViewById(R.id.c5);
         rules=(CheckBox)findViewById(R.id.rule);
 
 
-        btns=new ArrayList<Button>(5);
-        btns.add(cam1);
-        btns.add(cam2);
-        btns.add(cam3);
-        btns.add(cam4);
-        btns.add(cam5);
+        Cameras=new ArrayList<ImageView>(5);
+        Cameras.add(cam1);
+        Cameras.add(cam2);
+        Cameras.add(cam3);
+        Cameras.add(cam4);
+        Cameras.add(cam5);
 
-        for(final Button item:btns)
-        {
+        for(final ImageView item:Cameras)
+        {item.setImageResource(R.drawable.icons88);
             item.setOnClickListener(new View.OnClickListener() {
                 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 @Override
                 public void onClick(View view) {
-                    pic++;
+                    pic=Cameras.indexOf(item);
                     pick();
+
+
+
 
                 }
             });
@@ -463,20 +470,35 @@ public class SabtAgahi_Car extends AppCompatActivity {
     public void pick()
     {
 
+        final int ID_THIS_ACTIVITY=30;
         Intent i = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        i.setType("image/*");
         final int ACTIVITY_SELECT_IMAGE = 1234;
-        startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
+        try {
+            if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                    String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                    requestPermissions(permission, ID_THIS_ACTIVITY);
+                } else {
+
+                    startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
+                }
+            }
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
 
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch(requestCode) {
             case 1234:
-                if(resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     Uri selectedImage = data.getData();
                     String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
@@ -485,33 +507,18 @@ public class SabtAgahi_Car extends AppCompatActivity {
 
                     int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                     String filePath = cursor.getString(columnIndex);
+
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+
                     cursor.close();
+                    yourSelectedImage = BitmapFactory.decodeFile(filePath, options);
+                    Cameras.get(pic).setImageBitmap(yourSelectedImage);
 
 
-                    yourSelectedImage = BitmapFactory.decodeFile(filePath);
-            /* Now you have choosen image in Bitmap format in object "yourSelectedImage". You can use it in way you want! */
 
-                    Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
-
-                    for(final Button item:btns)
-                    {
-                        item.setOnClickListener(new View.OnClickListener() {
-                            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-                            @Override
-                            public void onClick(View view) {
-
-                                d = new BitmapDrawable(getBaseContext().getResources(),yourSelectedImage);
-                                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN){
-                                    item.setBackgroundDrawable(d);
-                                } else {
-                                    item.setBackground(d);
-                                }
-
-                            }
-                        });
-                    }
                 }
-
+        }
         }
     }
-}
+

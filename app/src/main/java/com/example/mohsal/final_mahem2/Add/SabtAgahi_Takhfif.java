@@ -1,9 +1,17 @@
 package com.example.mohsal.final_mahem2.Add;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,9 +35,11 @@ public class SabtAgahi_Takhfif extends AppCompatActivity {
     View CallLayout,CityLayout;
     TextView city_1,city_2,city_3,city_4,city_5,city_6,city_7,city_8,city_9,city_10,city_11,city_12,city_13,city_14;
     CheckBox rules,chat,email_check;
-    Button send,cam1,cam2,cam3,cam4,cam5,ok_call;
+    ImageView cam1,cam2,cam3,cam4,cam5;
+    Button send,ok_call;
+    Bitmap yourSelectedImage;
     PopupWindow City_Layout,Call_Layout;
-    ArrayList<Button> btns;
+    ArrayList<ImageView> Cameras;
     ImageView map_img;
     private String searchingLocation;
 
@@ -53,38 +63,41 @@ public class SabtAgahi_Takhfif extends AppCompatActivity {
         location=(EditText)findViewById(R.id.T10);
 
         send=(Button)findViewById(R.id.send);
-        cam1=(Button)findViewById(R.id.c1);
-        cam2=(Button)findViewById(R.id.c2);
-        cam3=(Button)findViewById(R.id.c3);
-        cam4=(Button)findViewById(R.id.c4);
-        cam5=(Button)findViewById(R.id.c5);
+        cam1=findViewById(R.id.c1);
+        cam2=findViewById(R.id.c2);
+        cam3=findViewById(R.id.c3);
+        cam4=findViewById(R.id.c4);
+        cam5=findViewById(R.id.c5);
         rules=(CheckBox)findViewById(R.id.rule);
-        map_img=findViewById(R.id.map_img);
 
 
-        btns=new ArrayList<Button>(5);
-        btns.add(cam1);
-        btns.add(cam2);
-        btns.add(cam3);
-        btns.add(cam4);
-        btns.add(cam5);
+        Cameras=new ArrayList<ImageView>(5);
+        Cameras.add(cam1);
+        Cameras.add(cam2);
+        Cameras.add(cam3);
+        Cameras.add(cam4);
+        Cameras.add(cam5);
 
-        for(Button item:btns)
-        {
+        for(final ImageView item:Cameras)
+        {item.setImageResource(R.drawable.icons88);
             item.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 @Override
                 public void onClick(View view) {
-                    pic++;
-                    //  pick();
+                    pic=Cameras.indexOf(item);
+                    pick();
+
+
 
 
                 }
             });
         }
 
+        map_img=(ImageView)findViewById(R.id.map_img);
         map_img.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent mapIntent=new Intent(Intent.ACTION_VIEW);
                 searchingLocation="";
                 mapIntent.setData(Uri.parse("geo:0,0?q="+searchingLocation));
@@ -329,5 +342,54 @@ public class SabtAgahi_Takhfif extends AppCompatActivity {
     public void pick()
     {
 
+        final int ID_THIS_ACTIVITY=40;
+        Intent i = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        i.setType("image/*");
+        final int ACTIVITY_SELECT_IMAGE = 1234;
+        try {
+            if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                    String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                    requestPermissions(permission, ID_THIS_ACTIVITY);
+                } else {
+
+                    startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
+                }
+            }
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case 1234:
+                if (resultCode == RESULT_OK) {
+                    Uri selectedImage = data.getData();
+                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+                    cursor.moveToFirst();
+
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String filePath = cursor.getString(columnIndex);
+
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+
+                    cursor.close();
+                    yourSelectedImage = BitmapFactory.decodeFile(filePath, options);
+                    Cameras.get(pic).setImageBitmap(yourSelectedImage);
+
+
+
+                }
+        }
     }
 }
