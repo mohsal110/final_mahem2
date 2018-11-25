@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class Ads extends AppCompatActivity {
     private View navigationBar;
     private ImageView Home,Add,Menu,MenuLine,Search;
 
+    EditText find;
 
     private RecyclerView recyclerView;
     List<Advertising> AdvList;
@@ -43,6 +45,7 @@ public class Ads extends AppCompatActivity {
 
     };
 
+    private String Src_intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,8 @@ public class Ads extends AppCompatActivity {
 
 
         Filter=(ImageView)findViewById(R.id.filter);
+
+
         Filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +85,10 @@ public class Ads extends AppCompatActivity {
             }
         });
 
+
+        find=(EditText)findViewById(R.id.search_word);
         map();
+        Network_Ads();
 
         Toast.makeText(this,getLocalClassName().toString()+"\nNiky",Toast.LENGTH_LONG).show();
     }
@@ -140,6 +148,11 @@ public class Ads extends AppCompatActivity {
             }
         });
 
+    }
 
+    public void Network_Ads()
+    {
+        Intent i =getIntent();
+        Src_intent=i.getStringExtra("id");
     }
 }

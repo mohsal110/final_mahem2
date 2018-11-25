@@ -2,6 +2,8 @@ package com.example.mohsal.final_mahem2.Search_Filter;
 
 import android.content.Context;
 import com.example.mohsal.final_mahem2.R;
+
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,6 +27,8 @@ public class Filter_Khodro extends AppCompatActivity {
     PopupWindow Type_Layout,Gheimat_Layout,City_Layout;
 
     PopupMenu popup;
+
+    boolean Newest=false,Expensive=false,Cheap=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,11 +97,14 @@ public class Filter_Khodro extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tt("اعمال شد.");
+
+                Send_Filter_Car();
             }
         });
 
         Toast.makeText(this,getLocalClassName().toString()+"\nNiky",Toast.LENGTH_LONG).show();
 
+        Filter_Buttons();
     }
 
 public void tt(String s)
@@ -368,5 +375,91 @@ public void tt(String s)
 
         });
 
+    }
+
+    public void Filter_Buttons()
+    {
+        newest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Newest==false)
+                {
+                    newest.setBackgroundResource(R.drawable.button2_red);
+                    newest.setTextColor(getResources().getColor(R.color.colorDefaultBackground));
+                    Newest=true;
+                }
+                else {
+                    newest.setBackgroundResource(R.drawable.button2);
+                    newest.setTextColor(getResources().getColor(R.color.backColor));
+                    Newest=false;
+                }
+            }
+        });
+
+        cheap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Cheap==false)
+                {
+                    cheap.setBackgroundResource(R.drawable.button2_right_red);
+                    cheap.setTextColor(getResources().getColor(R.color.colorDefaultBackground));
+                    Cheap=true;
+
+                    if(Expensive==true)
+                    {
+                        expensive.setBackgroundResource(R.drawable.button2_left);
+                        expensive.setTextColor(getResources().getColor(R.color.backColor));
+                        Expensive=false;
+                    }
+                }
+                else {
+                    cheap.setBackgroundResource(R.drawable.button2_right);
+                    cheap.setTextColor(getResources().getColor(R.color.backColor));
+                    Cheap=false;
+                }
+            }
+        });
+
+        expensive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Expensive==false)
+                {
+                    expensive.setBackgroundResource(R.drawable.button2_left_red);
+                    expensive.setTextColor(getResources().getColor(R.color.colorDefaultBackground));
+                    Expensive=true;
+
+                    if(Cheap==true)
+                    {
+                        cheap.setBackgroundResource(R.drawable.button2_right);
+                        cheap.setTextColor(getResources().getColor(R.color.backColor));
+                        Cheap=false;
+                    }
+                }
+                else {
+                    expensive.setBackgroundResource(R.drawable.button2_left);
+                    expensive.setTextColor(getResources().getColor(R.color.backColor));
+                    Expensive=false;
+                }
+            }
+        });
+    }
+
+    public void Send_Filter_Car()
+    {
+        Intent i = new Intent();
+        i.putExtra("AcName", "Car");
+        i.putExtra("group", Group.getText().toString());
+        i.putExtra("brand", brand.getText().toString());
+        i.putExtra("year", year.getText().toString());
+        i.putExtra("Type", Type.getText().toString());
+        i.putExtra("gheimat", Gheimat.getText().toString());
+        i.putExtra("K_meter", K_meter.getText().toString());
+        i.putExtra("city", city.getText().toString());
+        i.putExtra("newest",newest.toString());
+        i.putExtra("cheap",cheap.toString());
+        i.putExtra("expensive",expensive.toString());
+        setResult(RESULT_OK,i);
+        finish();
     }
 }

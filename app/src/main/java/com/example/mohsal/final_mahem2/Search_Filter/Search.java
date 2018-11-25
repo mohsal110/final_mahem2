@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class Search extends AppCompatActivity {
 
     };
 
+    EditText search;
 
 
     private String activity_title;
@@ -58,7 +60,9 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        search=(EditText)findViewById(R.id.search_word);
         ActivityTitle=findViewById(R.id.activity_title);
+
         title_intent=getIntent();
         activity_title=title_intent.getExtras().get("title").toString();
         if(activity_title!=null){
@@ -93,7 +97,7 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(Search.this,Filter_other.class);
-                startActivity(i);
+                startActivityForResult(i,1);
 
             }
         });
@@ -153,10 +157,27 @@ public class Search extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getBaseContext(), Off.class);
                 startActivity(i);
-
+                finish();
             }
         });
 
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(requestCode==1)
+        {
+            if(resultCode==RESULT_FIRST_USER)
+            {
+                search.setText(data.getStringExtra("group"));
+            }
+            else
+            {
+//                    if(data.getStringExtra("src")=="")
+            }
+        }
 
     }
 }
