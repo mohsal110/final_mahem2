@@ -67,23 +67,26 @@ public class MessageList extends AppCompatActivity {
             }
         });
 
-        Call.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + formattedNumber));
+//        Call.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + formattedNumber));
+//
+//                final int ID_THIS_ACTIVITY=11;
+//                if(Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.M){
+//                    if(checkSelfPermission(Manifest.permission.CALL_PHONE)== PackageManager.PERMISSION_DENIED) {
+//                        String[] permission = {Manifest.permission.CALL_PHONE};
+//                        requestPermissions(permission, ID_THIS_ACTIVITY);
+//                    }
+//                    else{
+//                        startActivity(i);
+//                    }
+//                }
+//            }
+//        });
 
-                final int ID_THIS_ACTIVITY=10;
-                if(Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.M){
-                    if(checkSelfPermission(Manifest.permission.CALL_PHONE)== PackageManager.PERMISSION_DENIED) {
-                        String[] permission = {Manifest.permission.CALL_PHONE};
-                        requestPermissions(permission, ID_THIS_ACTIVITY);
-                    }
-                    else{
-                        startActivity(i);
-                    }
-                }
-            }
-        });
+
+        
         }
     }
 
