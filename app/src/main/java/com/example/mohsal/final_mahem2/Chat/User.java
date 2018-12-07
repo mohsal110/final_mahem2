@@ -2,6 +2,7 @@ package com.example.mohsal.final_mahem2.Chat;
 
 import android.widget.ImageView;
 
+
 public class User {
     String nickname;
     String profileUrl;

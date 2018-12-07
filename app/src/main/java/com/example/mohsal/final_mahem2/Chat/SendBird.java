@@ -1,7 +1,8 @@
 package com.example.mohsal.final_mahem2.Chat;
 
-class SendBird {
 
+
+public class SendBird {
     private static User CurrentUser;
 
 

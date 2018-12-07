@@ -1,7 +1,7 @@
 package com.example.mohsal.final_mahem2.Chat;
 
-public class UserMessage {
 
+public class UserMessage {
     private String Message,CreatedAt;
     private User Sender;
 

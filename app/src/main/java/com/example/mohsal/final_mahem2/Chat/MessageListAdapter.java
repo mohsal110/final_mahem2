@@ -1,12 +1,10 @@
 package com.example.mohsal.final_mahem2.Chat;
 
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mohsal.final_mahem2.R;
@@ -70,7 +68,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-      //  message = (UserMessage) mMessageList.get(position);
+        //  message = (UserMessage) mMessageList.get(position);
 
         switch (holder.getItemViewType()) {
             case VIEW_TYPE_MESSAGE_SENT:
@@ -110,17 +108,17 @@ public class MessageListAdapter extends RecyclerView.Adapter {
 
             messageText = (TextView) itemView.findViewById(R.id.text_message_body);
             timeText = (TextView) itemView.findViewById(R.id.time_received);
-            }
+        }
 
         void bind(UserMessage message) {
             messageText.setText(message.getMessage());
 
             // Format the stored timestamp into a readable String using method.
-          //  timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
+            //  timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
 
 
             // Insert the profile image from the URL into the ImageView.
-           //** Utils.displayRoundImageFromUrl(mContext, message.getSender().getProfileUrl(), profileImage);
+            //** Utils.displayRoundImageFromUrl(mContext, message.getSender().getProfileUrl(), profileImage);
         }
     }
 }

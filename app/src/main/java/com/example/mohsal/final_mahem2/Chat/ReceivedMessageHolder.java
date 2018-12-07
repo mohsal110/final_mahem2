@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.example.mohsal.final_mahem2.R;
 
+
+
 class ReceivedMessageHolder extends RecyclerView.ViewHolder {
     TextView messageText, timeText, nameText;
     ImageView profileImage;
@@ -24,12 +26,12 @@ class ReceivedMessageHolder extends RecyclerView.ViewHolder {
         messageText.setText(message.getMessage());
 
         // Format the stored timestamp into a readable String using method.
-      //**  timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
+        //**  timeText.setText(Utils.formatDateTime(message.getCreatedAt()));
         nameText.setText(message.getSender().getNickname());
 
         // Insert the profile image from the URL into the ImageView.
 
 
-    //**    Utils.displayRoundImageFromUrl(mContext, message.getSender().getProfileUrl(), profileImage);
+        //**    Utils.displayRoundImageFromUrl(mContext, message.getSender().getProfileUrl(), profileImage);
     }
 }

@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.telephony.PhoneNumberUtils;
@@ -67,26 +67,26 @@ public class MessageList extends AppCompatActivity {
             }
         });
 
-//        Call.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + formattedNumber));
-//
-//                final int ID_THIS_ACTIVITY=11;
-//                if(Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.M){
-//                    if(checkSelfPermission(Manifest.permission.CALL_PHONE)== PackageManager.PERMISSION_DENIED) {
-//                        String[] permission = {Manifest.permission.CALL_PHONE};
-//                        requestPermissions(permission, ID_THIS_ACTIVITY);
-//                    }
-//                    else{
-//                        startActivity(i);
-//                    }
-//                }
-//            }
-//        });
+        Call=findViewById(R.id.call);
+        Call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + formattedNumber));
+
+                final int ID_THIS_ACTIVITY=11;
+                if(Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.M){
+                    if(checkSelfPermission(Manifest.permission.CALL_PHONE)== PackageManager.PERMISSION_DENIED) {
+                        String[] permission = {Manifest.permission.CALL_PHONE};
+                        requestPermissions(permission, ID_THIS_ACTIVITY);
+                    }
+                    else{
+                        startActivity(i);
+                    }
+                }
+            }
+        });
 
 
-        
-        }
+
     }
-
+}
