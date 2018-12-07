@@ -1,7 +1,9 @@
 package com.example.mohsal.final_mahem2.MenuItems;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,20 +36,20 @@ public class Setting extends AppCompatActivity {
     TextView city_1,city_2,city_3,city_4,city_5,city_6,city_7,city_8,city_9
             ,city_10,city_11,city_12,city_13,city_14;
     PopupWindow City_Layout;
-    RadioGroup lang;
+    RadioButton per,eng;
     int image_select;
     final int CAMERA_PIC_REQUEST=234;
     private String selected_city;
 
-    String language;
-
     ImageView logo;
     RelativeLayout F;
+    public static Bitmap yourSelectedImage,camera_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
 
 
         cam=(Button)findViewById(R.id.cam);
@@ -58,8 +59,9 @@ public class Setting extends AppCompatActivity {
         city=(EditText)findViewById(R.id.T);
         logo=(ImageView)findViewById(R.id.ic_logo);
 
-       lang=(RadioGroup)findViewById(R.id.lang);
-       language=((RadioButton)findViewById(lang.getCheckedRadioButtonId())).getText().toString();
+        eng=(RadioButton) findViewById(R.id.eng);
+        per=(RadioButton) findViewById(R.id.per);
+        F=findViewById(R.id.fr);
 
         city.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,12 +79,24 @@ public class Setting extends AppCompatActivity {
         gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final int ID_THIS_ACTIVITY=40;
                 Intent i = new Intent(Intent.ACTION_PICK,
                         android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                i.setType("image/*");
                 final int ACTIVITY_SELECT_IMAGE = 1234;
-                startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
-                //shows background selected from gallery
-                image_select=1;
+                try {
+                    if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                            String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                            requestPermissions(permission, ID_THIS_ACTIVITY);
+                        } else {
+
+                            startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
+                        }
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
         cam.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +124,7 @@ public class Setting extends AppCompatActivity {
 
         Toast.makeText(this,getLocalClassName().toString()+"\nNiky",Toast.LENGTH_LONG).show();
 
+        language_cntrl();
 
     }
     public void tt(String s)
@@ -117,13 +132,27 @@ public class Setting extends AppCompatActivity {
         Toast.makeText(getBaseContext(),s,Toast.LENGTH_SHORT).show();
     }
 
+    public void language_cntrl(){
+        if(per.isChecked()){
+            if(eng.isChecked()){
+                per.setChecked(false);
+                eng.setChecked(true);
+            }
+        }else if(eng.isChecked()) {
+            if (per.isChecked()) {
+                eng.setChecked(false);
+                per.setChecked(true);
+            }
+        }
+    }
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         switch(requestCode) {
             case 1234:
-                if(resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     Uri selectedImage = data.getData();
                     String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
@@ -132,24 +161,32 @@ public class Setting extends AppCompatActivity {
 
                     int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                     String filePath = cursor.getString(columnIndex);
+
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+
                     cursor.close();
+                    yourSelectedImage = BitmapFactory.decodeFile(filePath, options);
+                    //Cameras.get(pic).setImageBitmap(yourSelectedImage);
 
 
-                    Bitmap yourSelectedImage = BitmapFactory.decodeFile(filePath);
-                    logo.setImageBitmap(yourSelectedImage);
 
-            /* Now you have choosen image in Bitmap format in object "yourSelectedImage". You can use it in way you want! */
 
-                    Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+                }
+
+
                 }
                 if (requestCode == CAMERA_PIC_REQUEST) {
-                    Bitmap image = (Bitmap) data.getExtras().get("data");
-                    //ImageView imageview = (ImageView) findViewById(R.id.ImageView01); //sets imageview as the bitmap
-                    //imageview.setImageBitmap(image);
-                    Toast.makeText(this, "hello again", Toast.LENGTH_SHORT).show();
+                    camera_image = (Bitmap) data.getExtras().get("data");
+
+
                 }
+
+
+
+
         }
-    }
+
 
     public void City_map()
     {

@@ -6,15 +6,22 @@
     android:layout_height="match_parent"
     tools:context="com.example.mohsal.final_mahem2.OffFinder.map">
 
-    <ImageView
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/screenshot"/>
+        android:id="@+id/MapFragment"
+        android:name="com.google.android.gms.maps.MapFragment"
+        />
     <TextView
+        android:id="@+id/t_types"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Not completed"
+        android:text="همه تخفیف ها"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/light_dark_tv"
+        android:padding="7dp"
+        android:textSize="20sp"
         android:textColor="@android:color/black"
-        android:textSize="50sp"
-        android:layout_centerInParent="true"/>
+        android:drawableLeft="@android:drawable/arrow_up_float"/>
 </RelativeLayout>

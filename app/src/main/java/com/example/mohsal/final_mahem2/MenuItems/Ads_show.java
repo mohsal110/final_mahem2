@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mohsal.final_mahem2.Chat.MessageList;
 import com.example.mohsal.final_mahem2.R;
 
 
@@ -200,9 +201,10 @@ public class Ads_show extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //should fill with network data
 
-                Toast.makeText(getBaseContext(),"NETWORK",Toast.LENGTH_SHORT).show();
+
+                Intent intent=new Intent(Ads_show.this, MessageList.class);
+                startActivity(intent);
             }
         });
         Toast.makeText(this, getLocalClassName().toString() + "\nMohadese Salem", Toast.LENGTH_LONG).show();

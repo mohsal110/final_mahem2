@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.mohsal.final_mahem2.Chat.MessageList;
 import com.example.mohsal.final_mahem2.MenuItems.Contact;
 import com.example.mohsal.final_mahem2.MenuItems.ViewPagerAdapter;
 import com.example.mohsal.final_mahem2.R;
@@ -217,9 +217,8 @@ public class Takhfif_Show extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //should fill with network data
-
-                Toast.makeText(getBaseContext(),"NETWORK", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(Takhfif_Show.this, MessageList.class);
+                startActivity(intent);
             }
         });
 

@@ -1,11 +1,16 @@
 package com.example.mohsal.final_mahem2.MenuItems;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +32,11 @@ public class Menu1 extends AppCompatActivity {
     ImageView Home, Add, Menu, MenuLine, Search;
     ImageView imgR;
     TextView tv;
+    ImageView Background;
+    LinearLayout backgroundPhoto;
+    Management_Panel management_panel;
+    Setting setting;
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +54,13 @@ public class Menu1 extends AppCompatActivity {
         aboutUs=findViewById(R.id.btn_about_us);
         Setting=findViewById(R.id.btn_setting);
         ContactUs=findViewById(R.id.btn_contact_us);
+        Background=findViewById(R.id.menu_back);
+        backgroundPhoto=findViewById(R.id.menu_back_photo);
 
          imgR=(ImageView)findViewById(R.id.img_register);
          tv=(TextView)findViewById(R.id.TV1);
+
+
 
 
         Favorite.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +180,34 @@ public class Menu1 extends AppCompatActivity {
         Toast.makeText(this,getLocalClassName().toString()+"\nNiky",Toast.LENGTH_LONG).show();
  }
 
+    @SuppressLint("Range")
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setting=new Setting();
+        if(setting.yourSelectedImage!=null){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                backgroundPhoto.setBackground(new BitmapDrawable(setting.yourSelectedImage));
+                backgroundPhoto.setAlpha((float) 90);
+
+            }
+        }else if(setting.camera_image!=null){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                backgroundPhoto.setBackground(new BitmapDrawable(setting.yourSelectedImage));
+            }
+            backgroundPhoto.setAlpha((float) 90);
+        }
+
+        management_panel=new Management_Panel();
+        if(management_panel.SelectedProfileImage!=null){
+            //imgR.setImageBitmap(management_panel.SelectedProfileImage);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+
+                imgR.setImageBitmap(management_panel.SelectedProfileImage);
+
+            }
+        }
+    }
 
     public void map() {
 
