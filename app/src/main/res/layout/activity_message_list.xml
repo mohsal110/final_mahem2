@@ -34,7 +34,7 @@
                 android:layout_alignParentTop="true"
                 android:src="@mipmap/ic_flsh_right" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <com.example.mohsal.final_mahem2.CustomComponents.CircleImageView
                 android:id="@+id/img"
                 android:layout_width="74dp"
                 android:layout_height="match_parent"
@@ -65,16 +65,17 @@
                 android:padding="10dp"
                 android:src="@drawable/phone" />
         </RelativeLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/reyclerview_message_list"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+        <ListView
+            android:id="@+id/message_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_below="@+id/toolbar">
-        </android.support.v7.widget.RecyclerView>
+            android:layout_below="@+id/toolbar"
+            android:paddingBottom="50dp">
+        </ListView>
+
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -137,8 +137,9 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:text="هشدارپلیس : لطفا پیش از انجام معامله و هرنوع پرداخت وجه ، از صحت کالا یا خدمات ارائه شده ، به صورت حضوری اطمینان حاصل نمایید. "
-android:id="@+id/tt"        />
+        android:id="@+id/tt" />
 <Button
+    android:id="@+id/exitBtn"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="#f9f9f9"
