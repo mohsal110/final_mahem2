@@ -5,21 +5,25 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.telephony.PhoneNumberUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mohsal.final_mahem2.R;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -28,10 +32,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class MessageList extends AppCompatActivity {
 
-    private RecyclerView mMessageRecycler;
-    private MessageListAdapter mMessageAdapter;
+    ListView list;
+    EditText msg;
 
-    List<BaseMessage> messageList;
+    String text;
+    ChatModel chatModelssss;
+
+    List<ChatModel> chatModels;
+    CustomAdapter customAdapter;
 
     String ph_number="";
     String formattedNumber = PhoneNumberUtils.formatNumber(ph_number, Locale.getDefault().getCountry());
@@ -47,15 +55,41 @@ public class MessageList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_list);
 
-        mMessageRecycler = (RecyclerView) findViewById(R.id.reyclerview_message_list);
-        mMessageAdapter = new MessageListAdapter(this, messageList);
-        mMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+        chatModels=new ArrayList<>();
+        list=(ListView)findViewById(R.id.message_list);
+        msg=(EditText)findViewById(R.id.MessageText);
 
         SendMessage=(RelativeLayout)findViewById(R.id.SendBtn);
+
+        chatModels.add(new ChatModel("سلام" + "\n" +"  شرایط فروش خودرو و اقساطش رو توضیح میدین؟؟"
+                ,false, Calendar.getInstance().getTime()));
+        chatModels.add(new ChatModel("سلام ، زنگ بزنین تا بتونم بهتر توضیح بدم",true,Calendar.getInstance().getTime()));
+        customAdapter=new CustomAdapter(chatModels,getApplicationContext());
+        list.setAdapter(customAdapter);
         SendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getBaseContext(),"sent", Toast.LENGTH_LONG).show();
+
+                if(msg.getText().toString().equals(""))
+                {
+                    msg.setHint("افزودن متن");
+                }
+                else {
+                    Toast.makeText(getBaseContext(), "sent", Toast.LENGTH_LONG).show();
+
+                    text = msg.getText().toString();
+
+                    chatModelssss = new ChatModel(text, true, Calendar.getInstance().getTime());
+
+                    chatModels.add(chatModelssss);
+
+                    msg.setText("");
+                    msg.setHint("افزودن متن");
+
+
+                    list.setAdapter(customAdapter);
+                }
             }
         });
 
@@ -67,7 +101,7 @@ public class MessageList extends AppCompatActivity {
             }
         });
 
-        Call=findViewById(R.id.call);
+        Call=(ImageView)findViewById(R.id.call);
         Call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +121,7 @@ public class MessageList extends AppCompatActivity {
         });
 
 
-
+        
+        }
     }
-}
+
