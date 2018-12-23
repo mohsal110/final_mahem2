@@ -63,11 +63,11 @@ public class SabtAgahi_Estekhdam extends AppCompatActivity {
         map_img=(ImageView)findViewById(R.id.map_img);
 
         send=(Button)findViewById(R.id.send);
-        cam1=(Button)findViewById(R.id.c1);
-        cam2=findViewById(R.id.c2);
-        cam3=findViewById(R.id.c3);
-        cam4=findViewById(R.id.c4);
-        cam5=findViewById(R.id.c5);
+        cam1=(ImageView)findViewById(R.id.c1);
+        cam2=(ImageView)findViewById(R.id.c2);
+        cam3=(ImageView)findViewById(R.id.c3);
+        cam4=(ImageView)findViewById(R.id.c4);
+        cam5=(ImageView)findViewById(R.id.c5);
         rules=(CheckBox)findViewById(R.id.rule);
 
 
