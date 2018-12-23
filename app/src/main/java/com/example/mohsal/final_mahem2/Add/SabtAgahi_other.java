@@ -1,5 +1,6 @@
 package com.example.mohsal.final_mahem2.Add;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -38,6 +39,7 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
     private String searchingLocation;
     int pic=0;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,7 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
         map_img=(ImageView)findViewById(R.id.map_img);
 
         send=(Button)findViewById(R.id.send);
-        cam1=findViewById(R.id.c1);
+        cam1=(ImageView)findViewById(R.id.c1);
         cam2=findViewById(R.id.c2);
         cam3=findViewById(R.id.c3);
         cam4=findViewById(R.id.c4);

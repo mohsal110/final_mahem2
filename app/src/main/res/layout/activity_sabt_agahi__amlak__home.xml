@@ -80,7 +80,7 @@
             android:orientation="horizontal"
             android:padding="5dp">
 
-            <Button
+            <ImageView
                 android:id="@+id/c1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -88,10 +88,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/button"
                 android:clickable="true"
-                android:drawableBottom="@drawable/icons88"
+                android:src="@drawable/icons88"
                 android:padding="2dp" />
 
-            <Button
+            <ImageView
                 android:id="@+id/c2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -99,10 +99,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/button"
                 android:clickable="true"
-                android:drawableBottom="@drawable/icons88"
+                android:src="@drawable/icons88"
                 android:padding="2dp" />
 
-            <Button
+            <ImageView
                 android:id="@+id/c3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -110,10 +110,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/button"
                 android:clickable="true"
-                android:drawableBottom="@drawable/icons88"
+                android:src="@drawable/icons88"
                 android:padding="2dp" />
 
-            <Button
+            <ImageView
                 android:id="@+id/c4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -121,10 +121,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/button"
                 android:clickable="true"
-                android:drawableBottom="@drawable/icons88"
+                android:src="@drawable/icons88"
                 android:padding="2dp" />
 
-            <Button
+            <ImageView
                 android:id="@+id/c5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -132,7 +132,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/button"
                 android:clickable="true"
-                android:drawableBottom="@drawable/icons88"
+                android:src="@drawable/icons88"
                 android:padding="2dp" />
 
         </LinearLayout>

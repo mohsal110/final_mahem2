@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class Contact extends AppCompatActivity {
     private RelativeLayout Call_us,Message_us,Email_us;
     private TextView call_tv,sms_tv,mail_tv;
 
+    Button ExitBtn;
     //should fill with network data
     String ph_number="";
     String formattedNumber = PhoneNumberUtils.formatNumber(ph_number,
@@ -52,7 +54,14 @@ public class Contact extends AppCompatActivity {
         mail_tv=(TextView)findViewById(R.id.mail_txt);
         mail_tv.setText("ایمیل به"+email_address);
 
+        ExitBtn=(Button)findViewById(R.id.exitBtn);
 
+        ExitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         Call_us=(RelativeLayout)findViewById(R.id.call);
