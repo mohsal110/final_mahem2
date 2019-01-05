@@ -41,7 +41,7 @@ public class SabtAgahi_Amlak_Office extends AppCompatActivity {
     ArrayList<ImageView> Cameras;
     ImageView map_img;
     String searchingLocation;
-
+    TextView title,select,fiveTimes;
     int pic=0;
 
     @Override
@@ -49,36 +49,7 @@ public class SabtAgahi_Amlak_Office extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sabt_agahi__amlak__office);
 
-
-
-        Group=(EditText)findViewById(R.id.T1);
-        Title=(EditText)findViewById(R.id.T2);
-        Amlak_type=(EditText)findViewById(R.id.T3);
-        meter=(EditText)findViewById(R.id.T4);
-        Type=(EditText)findViewById(R.id.T5);
-        AgahiDahande_type=(EditText)findViewById(R.id.T6);
-        Gheimat=(EditText)findViewById(R.id.T7);
-        call=(EditText)findViewById(R.id.T8);
-        Tozihat=(EditText)findViewById(R.id.T9);
-        location=(EditText)findViewById(R.id.T10);
-
-        map_img=(ImageView)findViewById(R.id.map_img);
-
-        send=(Button)findViewById(R.id.send);
-        cam1=findViewById(R.id.c1);
-        cam2=findViewById(R.id.c2);
-        cam3=findViewById(R.id.c3);
-        cam4=findViewById(R.id.c4);
-        cam5=findViewById(R.id.c5);
-        rules=(CheckBox)findViewById(R.id.rule);
-
-
-        Cameras=new ArrayList<ImageView>(5);
-        Cameras.add(cam1);
-        Cameras.add(cam2);
-        Cameras.add(cam3);
-        Cameras.add(cam4);
-        Cameras.add(cam5);
+    init();
 
         for(final ImageView item:Cameras)
         {item.setImageResource(R.drawable.icons88);
@@ -176,6 +147,10 @@ public class SabtAgahi_Amlak_Office extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SabtAgaghi_Amlak_Office__SEND(Group.getText().toString(), Title.getText().toString(), Amlak_type.getText().toString(), meter.getText().toString(), Type.getText().toString(),
+                        AgahiDahande_type.getText().toString(), Gheimat.getText().toString(), call.getText().toString(), Tozihat.getText().toString(), location.getText().toString(), PhoneNum.getText().toString(),
+                        Email.getText().toString(), rahn.getText().toString(), ejareh.getText().toString());
+
                 tt("ارسال شد.");
             }
         });
@@ -423,5 +398,48 @@ public class SabtAgahi_Amlak_Office extends AppCompatActivity {
 
                 }
         }
+    }
+
+    private void init()
+    {
+        title=(TextView)findViewById(R.id.title) ;
+        select=(TextView)findViewById(R.id.select) ;
+        fiveTimes=(TextView)findViewById(R.id.fivetimes) ;
+        Group=(EditText)findViewById(R.id.T1);
+        Title=(EditText)findViewById(R.id.T2);
+        Amlak_type=(EditText)findViewById(R.id.T3);
+        meter=(EditText)findViewById(R.id.T4);
+        Type=(EditText)findViewById(R.id.T5);
+        AgahiDahande_type=(EditText)findViewById(R.id.T6);
+        Gheimat=(EditText)findViewById(R.id.T7);
+        call=(EditText)findViewById(R.id.T8);
+        Tozihat=(EditText)findViewById(R.id.T9);
+        location=(EditText)findViewById(R.id.T10);
+
+        map_img=(ImageView)findViewById(R.id.map_img);
+
+        send=(Button)findViewById(R.id.send);
+        cam1=findViewById(R.id.c1);
+        cam2=findViewById(R.id.c2);
+        cam3=findViewById(R.id.c3);
+        cam4=findViewById(R.id.c4);
+        cam5=findViewById(R.id.c5);
+        rules=(CheckBox)findViewById(R.id.rule);
+
+
+        Cameras=new ArrayList<ImageView>(5);
+        Cameras.add(cam1);
+        Cameras.add(cam2);
+        Cameras.add(cam3);
+        Cameras.add(cam4);
+        Cameras.add(cam5);
+
+    }
+
+    void SabtAgaghi_Amlak_Office__SEND(String Group,String Title,String Amlak_type,String meter,String Type
+            ,String AgahiDahande_type,String Gheimat,String call,String Tozihat,String location,String PhoneNum,
+                                     String Email,String rahn,String ejareh)
+    {
+
     }
 }

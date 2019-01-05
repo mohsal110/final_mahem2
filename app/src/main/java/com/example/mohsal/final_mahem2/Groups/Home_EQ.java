@@ -8,21 +8,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Home_EQ extends AppCompatActivity {
 Button kitchen,design;
+    TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home__eq);
 
-
-
-
-
-        kitchen=(Button)findViewById(R.id.btn1);
-        design=(Button)findViewById(R.id.btn2);
+        init();
 
         kitchen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,5 +41,13 @@ Button kitchen,design;
     }
 
 
+    private void init()
+    {
+
+        title=(TextView)findViewById(R.id.title);
+        kitchen=(Button)findViewById(R.id.btn1);
+        design=(Button)findViewById(R.id.btn2);
+
+    }
 
 }

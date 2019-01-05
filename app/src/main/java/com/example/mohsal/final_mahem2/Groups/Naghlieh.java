@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mohsal.final_mahem2.R;
@@ -12,23 +13,19 @@ import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
 public class Naghlieh extends AppCompatActivity  {
 Button savari,sangin,motor,yadaki,keshavarzi,other;
+    TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_naghlieh);
 
+        init();
 
-        savari=(Button)findViewById(R.id.btn1);
         savari.setOnClickListener(new IntentClick("81"));
-        sangin=(Button)findViewById(R.id.btn2);
         sangin.setOnClickListener(new IntentClick("82"));
-        motor=(Button)findViewById(R.id.btn3);
         motor.setOnClickListener(new IntentClick("83"));
-        yadaki=(Button)findViewById(R.id.btn4);
         yadaki.setOnClickListener(new IntentClick("84"));
-        keshavarzi=(Button)findViewById(R.id.btn5);
         keshavarzi.setOnClickListener(new IntentClick("85"));
-        other=(Button)findViewById(R.id.btn6);
         other.setOnClickListener(new IntentClick("86"));
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
@@ -50,4 +47,15 @@ Button savari,sangin,motor,yadaki,keshavarzi,other;
         }
     }
 
+    private void init()
+    {
+        title=(TextView)findViewById(R.id.title);
+        savari=(Button)findViewById(R.id.btn1);
+        sangin=(Button)findViewById(R.id.btn2);
+        motor=(Button)findViewById(R.id.btn3);
+        yadaki=(Button)findViewById(R.id.btn4);
+        keshavarzi=(Button)findViewById(R.id.btn5);
+        other=(Button)findViewById(R.id.btn6);
+
+    }
 }

@@ -38,7 +38,7 @@ public class Register extends AppCompatActivity {
                     return;
                 }
                 if (etUserName.getText().toString().equals("")) {
-                    etUserName.setError("لطفا ام کاربری خود را وارد کنید");
+                    etUserName.setError("لطفا نام کاربری خود را وارد کنید");
                     return;
                 } else if (etUserName.getText().toString().length() > 12 || etUserName.getText().toString().length() < 3) {
                     etUserName.setError("لطفا نام کاربری معتبر وارد کنید");

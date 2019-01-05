@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mohsal.final_mahem2.R;
@@ -12,20 +13,14 @@ import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
 public class Electric extends AppCompatActivity {
 Button tablet,net,soti,console,other;
+    TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_electric);
 
+        init();
 
-
-
-
-        tablet=(Button)findViewById(R.id.btn1);
-        net=(Button)findViewById(R.id.btn2);
-        soti=(Button)findViewById(R.id.btn3);
-        console=(Button)findViewById(R.id.btn4);
-        other=(Button)findViewById(R.id.btn5);
 
         tablet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,4 +66,16 @@ Button tablet,net,soti,console,other;
         }
     }
 
+    private void init()
+    {
+
+        title=(TextView)findViewById(R.id.title);
+        tablet=(Button)findViewById(R.id.btn1);
+        net=(Button)findViewById(R.id.btn2);
+        soti=(Button)findViewById(R.id.btn3);
+        console=(Button)findViewById(R.id.btn4);
+        other=(Button)findViewById(R.id.btn5);
+
+
+    }
 }

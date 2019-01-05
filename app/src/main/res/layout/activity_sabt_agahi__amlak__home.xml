@@ -53,6 +53,7 @@
             android:layout_height="1dp" />
 
         <TextView
+            android:id="@+id/select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -64,6 +65,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/fivetimes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"

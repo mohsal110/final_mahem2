@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Group extends AppCompatActivity {
 Button estekhdam,amlak,naghlie,electric,home,khadamat,tajhizat,sargarmi,personal;
+    TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,19 +19,7 @@ Button estekhdam,amlak,naghlie,electric,home,khadamat,tajhizat,sargarmi,personal
         setContentView(R.layout.activity_group);
 
 
-
-
-
-        estekhdam=(Button)findViewById(R.id.btn1);
-        amlak=(Button)findViewById(R.id.btn2);
-        naghlie=(Button)findViewById(R.id.btn3);
-        electric=(Button)findViewById(R.id.btn4);
-        home=(Button)findViewById(R.id.btn5);
-        khadamat=(Button)findViewById(R.id.btn6);
-        tajhizat=(Button)findViewById(R.id.btn7);
-        sargarmi=(Button)findViewById(R.id.btn8);
-        personal=(Button)findViewById(R.id.btn9);
-
+        init();
 
         estekhdam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,4 +90,19 @@ Button estekhdam,amlak,naghlie,electric,home,khadamat,tajhizat,sargarmi,personal
         });
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
     }
+private void init()
+{
+    title=(TextView)findViewById(R.id.title);
+    estekhdam=(Button)findViewById(R.id.btn1);
+    amlak=(Button)findViewById(R.id.btn2);
+    naghlie=(Button)findViewById(R.id.btn3);
+    electric=(Button)findViewById(R.id.btn4);
+    home=(Button)findViewById(R.id.btn5);
+    khadamat=(Button)findViewById(R.id.btn6);
+    tajhizat=(Button)findViewById(R.id.btn7);
+    sargarmi=(Button)findViewById(R.id.btn8);
+    personal=(Button)findViewById(R.id.btn9);
+
+}
+
 }

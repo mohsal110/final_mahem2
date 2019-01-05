@@ -22,6 +22,8 @@ ImageView L_img;
 CircleImageView S_img;
 Button send;
 EditText modiriat,senf_type,sabt_num,phone_office,mobile,fax,address,telegram,insta,email,tozihat;
+TextView title,modiriat_tv,senf_type_tv,sabt_num_tv,phone_office_tv,
+        mobile_tv,fax_tv,address_tv,telegram_tv,insta_tv,email_tv,tozihat_tv;
 
 PopupWindow Senf_layout;
 View SenfLayout;
@@ -34,21 +36,7 @@ Job_Sabt_Class job_sabt_class;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_bank__sabt);
 
-        L_img=(ImageView)findViewById(R.id.img);
-        S_img=(CircleImageView)findViewById(R.id.job_pic);
-        send=(Button)findViewById(R.id.send);
-
-        modiriat=(EditText)findViewById(R.id.E1);
-        senf_type=(EditText)findViewById(R.id.E2);
-        sabt_num=(EditText)findViewById(R.id.E3);
-        phone_office=(EditText)findViewById(R.id.E4);
-        mobile=(EditText)findViewById(R.id.E5);
-        fax=(EditText)findViewById(R.id.E6);
-        address=(EditText)findViewById(R.id.E7);
-        telegram=(EditText)findViewById(R.id.E8);
-        insta=(EditText)findViewById(R.id.E9);
-        email=(EditText)findViewById(R.id.E10);
-        tozihat=(EditText)findViewById(R.id.E11);
+      init();
 
         senf_type.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -278,4 +266,36 @@ Job_Sabt_Class job_sabt_class;
 //
 //    }
 
+
+    private void init()
+    {
+        L_img=(ImageView)findViewById(R.id.img);
+        S_img=(CircleImageView)findViewById(R.id.job_pic);
+        send=(Button)findViewById(R.id.send);
+
+        modiriat=(EditText)findViewById(R.id.E1);
+        senf_type=(EditText)findViewById(R.id.E2);
+        sabt_num=(EditText)findViewById(R.id.E3);
+        phone_office=(EditText)findViewById(R.id.E4);
+        mobile=(EditText)findViewById(R.id.E5);
+        fax=(EditText)findViewById(R.id.E6);
+        address=(EditText)findViewById(R.id.E7);
+        telegram=(EditText)findViewById(R.id.E8);
+        insta=(EditText)findViewById(R.id.E9);
+        email=(EditText)findViewById(R.id.E10);
+        tozihat=(EditText)findViewById(R.id.E11);
+
+        modiriat_tv=(TextView) findViewById(R.id.Tv1);
+        senf_type_tv=(TextView) findViewById(R.id.Tv2);
+        sabt_num_tv=(TextView) findViewById(R.id.Tv3);
+        phone_office_tv=(TextView) findViewById(R.id.Tv4);
+        mobile_tv=(TextView) findViewById(R.id.Tv5);
+        fax_tv=(EditText)(TextView) findViewById(R.id.Tv6);
+        address_tv=(TextView) findViewById(R.id.Tv7);
+        telegram_tv=(TextView) findViewById(R.id.Tv8);
+        insta_tv=(EditText)(TextView) findViewById(R.id.Tv9);
+        email_tv=(EditText)(TextView) findViewById(R.id.Tv10);
+        tozihat_tv=(TextView) findViewById(R.id.Tv11);
+
+    }
 }

@@ -43,6 +43,7 @@ public class SabtAgahi_Car extends AppCompatActivity {
     PopupWindow Type_Layout,Call_Layout,Gheimat_Layout,agahiD_Layout,Shasy_type_Layout,Naghd_Layout;
     ArrayList<ImageView> Cameras;
     ImageView map_img;
+    TextView title,select,fiveTimes;
     private Bitmap yourSelectedImage;
     private String searchingLocation;
 
@@ -57,40 +58,7 @@ public class SabtAgahi_Car extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sabt_agahi__car);
 
-
-
-        Group=(EditText)findViewById(R.id.T1);
-        Title=(EditText)findViewById(R.id.T2);
-        brand=(EditText)findViewById(R.id.T3);
-        shasy_typpe=(EditText)findViewById(R.id.T4);
-        naghd=(EditText)findViewById(R.id.T5);
-        year=(EditText)findViewById(R.id.T6);
-        K_meter=(EditText)findViewById(R.id.T7);
-        Gheimat=(EditText)findViewById(R.id.T8);
-        AgahiDahande_type=(EditText)findViewById(R.id.T9);
-        Type=(EditText)findViewById(R.id.T10);
-        call=(EditText)findViewById(R.id.T11);
-        Tozihat=(EditText)findViewById(R.id.T12);
-        location=(EditText)findViewById(R.id.T13);
-
-        map_img=(ImageView)findViewById(R.id.map_img);
-
-
-        send=findViewById(R.id.send);
-        cam1=findViewById(R.id.c1);
-        cam2=findViewById(R.id.c2);
-        cam3=findViewById(R.id.c3);
-        cam4=findViewById(R.id.c4);
-        cam5=findViewById(R.id.c5);
-        rules=(CheckBox)findViewById(R.id.rule);
-
-
-        Cameras=new ArrayList<ImageView>(5);
-        Cameras.add(cam1);
-        Cameras.add(cam2);
-        Cameras.add(cam3);
-        Cameras.add(cam4);
-        Cameras.add(cam5);
+        init();
 
         for(final ImageView item:Cameras)
         {item.setImageResource(R.drawable.icons88);
@@ -201,6 +169,11 @@ public class SabtAgahi_Car extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SabtAgahi_Car__SEND( Group.getText().toString(),Title.getText().toString(),brand.getText().toString()
+                        ,shasy_typpe.getText().toString(),naghd.getText().toString(),year.getText().toString(),K_meter.getText().toString()
+                        ,Gheimat.getText().toString(),AgahiDahande_type.getText().toString(),Type.getText().toString(),call.getText().toString()
+                        ,Tozihat.getText().toString(),location.getText().toString(),PhoneNum.getText().toString(),Email.getText().toString());
+
                 tt("ارسال شد.");
             }
         });
@@ -520,5 +493,54 @@ public class SabtAgahi_Car extends AppCompatActivity {
                 }
         }
         }
+
+        private void init()
+        {
+            title=(TextView)findViewById(R.id.title) ;
+            select=(TextView)findViewById(R.id.select) ;
+            fiveTimes=(TextView)findViewById(R.id.fivetimes) ;
+            Group=(EditText)findViewById(R.id.T1);
+            Title=(EditText)findViewById(R.id.T2);
+            brand=(EditText)findViewById(R.id.T3);
+            shasy_typpe=(EditText)findViewById(R.id.T4);
+            naghd=(EditText)findViewById(R.id.T5);
+            year=(EditText)findViewById(R.id.T6);
+            K_meter=(EditText)findViewById(R.id.T7);
+            Gheimat=(EditText)findViewById(R.id.T8);
+            AgahiDahande_type=(EditText)findViewById(R.id.T9);
+            Type=(EditText)findViewById(R.id.T10);
+            call=(EditText)findViewById(R.id.T11);
+            Tozihat=(EditText)findViewById(R.id.T12);
+            location=(EditText)findViewById(R.id.T13);
+
+            map_img=(ImageView)findViewById(R.id.map_img);
+
+
+            send=findViewById(R.id.send);
+            cam1=findViewById(R.id.c1);
+            cam2=findViewById(R.id.c2);
+            cam3=findViewById(R.id.c3);
+            cam4=findViewById(R.id.c4);
+            cam5=findViewById(R.id.c5);
+            rules=(CheckBox)findViewById(R.id.rule);
+
+
+            Cameras=new ArrayList<ImageView>(5);
+            Cameras.add(cam1);
+            Cameras.add(cam2);
+            Cameras.add(cam3);
+            Cameras.add(cam4);
+            Cameras.add(cam5);
+
+        }
+
+        ///network
+    void SabtAgahi_Car__SEND(String Group,String Title,String brand,String shasy_typpe,String naghd,String year,
+                             String K_meter,String Gheimat,String AgahiDahande_type,String Type,String call,
+                             String Tozihat,String location,String PhoneNum,String Email)
+    {
+
+    }
+
     }
 

@@ -1,12 +1,17 @@
 package com.example.mohsal.final_mahem2.Add;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -25,7 +30,7 @@ import com.example.mohsal.final_mahem2.R;
 import java.util.ArrayList;
 
 public class SabtAgahi_other extends AppCompatActivity {
-EditText Group,Title,Type,Gheimat,Tozihat,location;
+    EditText Group,Title,Type,Gheimat,Tozihat,location;
     View TypeLayout,GheimatLayout;
     TextView Type_1,Type_2,Gh_1,Gh_2,Gh_3,Gh_4;
     CheckBox rules;
@@ -35,7 +40,7 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
     PopupWindow Type_Layout,Gheimat_Layout;
     ArrayList<ImageView> Cameras;
     ImageView map_img;
-
+    TextView title,select,fiveTimes;
     private String searchingLocation;
     int pic=0;
 
@@ -46,30 +51,7 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
         setContentView(R.layout.activity_sabt_agahi_other);
 
 
-        Group=(EditText)findViewById(R.id.T1);
-        Title=(EditText)findViewById(R.id.T2);
-        Type=(EditText)findViewById(R.id.T3);
-        Gheimat=(EditText)findViewById(R.id.T4);
-        Tozihat=(EditText)findViewById(R.id.T5);
-        location=(EditText)findViewById(R.id.T6);
-
-        map_img=(ImageView)findViewById(R.id.map_img);
-
-        send=(Button)findViewById(R.id.send);
-        cam1=(ImageView)findViewById(R.id.c1);
-        cam2=findViewById(R.id.c2);
-        cam3=findViewById(R.id.c3);
-        cam4=findViewById(R.id.c4);
-        cam5=findViewById(R.id.c5);
-        rules=(CheckBox)findViewById(R.id.rule);
-
-
-        Cameras=new ArrayList<ImageView>(5);
-        Cameras.add(cam1);
-        Cameras.add(cam2);
-        Cameras.add(cam3);
-        Cameras.add(cam4);
-        Cameras.add(cam5);
+        init();
 
         for(final ImageView item:Cameras)
         {item.setImageResource(R.drawable.icons88);
@@ -93,11 +75,11 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
         Gheimat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutInflater inflater=(LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                GheimatLayout=inflater.inflate(R.layout.gheimat_layout,null);
-                Gheimat_Layout= new PopupWindow(GheimatLayout, LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-                Gheimat_Layout.showAsDropDown(view);
 
+                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                GheimatLayout = inflater.inflate(R.layout.gheimat_layout, null);
+                Gheimat_Layout = new PopupWindow(GheimatLayout, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                Gheimat_Layout.showAsDropDown(view);
                 Gheimat_map();
 
             }
@@ -113,7 +95,7 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
                 Type_Layout= new PopupWindow(TypeLayout, LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
                 Type_Layout.showAsDropDown(view);
 
-                Type_map();
+              Type_map();
 
             }
         });
@@ -132,6 +114,8 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SabtAgahi_other__SEND(Group.getText().toString(),Title.getText().toString(),Type.getText().toString()
+                        ,Gheimat.getText().toString(),Tozihat.getText().toString(),location.getText().toString());
                 tt("ارسال شد.");
             }
         });
@@ -150,8 +134,8 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
 
     public void Type_map()
     {
-        Type_1=(TextView)Type.findViewById(R.id.Tt1);
-        Type_2=(TextView)Type.findViewById(R.id.Tt2);
+        Type_1=(TextView)TypeLayout.findViewById(R.id.Tt1);
+        Type_2=(TextView)TypeLayout.findViewById(R.id.Tt2);
 
         Type_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,16 +156,12 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
 
     }
 
-    public void Gheimat_map()
+    public  void Gheimat_map()
     {
-
-        Gh_1=(TextView)Gheimat.findViewById(R.id.Tt1);
-        Gh_2=(TextView)Gheimat.findViewById(R.id.Tt2);
-        Gh_3=(TextView)Gheimat.findViewById(R.id.Tt3);
-        Gh_4=(TextView)Gheimat.findViewById(R.id.Tt4);
-
-
-
+        Gh_1=(TextView)GheimatLayout.findViewById(R.id.Tt1);
+        Gh_2=(TextView)GheimatLayout.findViewById(R.id.Tt2);
+        Gh_3=(TextView)GheimatLayout.findViewById(R.id.Tt3);
+        Gh_4=(TextView)GheimatLayout.findViewById(R.id.Tt4);
 
 
         Gh_1.setOnClickListener(new View.OnClickListener() {
@@ -223,5 +203,96 @@ EditText Group,Title,Type,Gheimat,Tozihat,location;
     public void pick()
     {
 
+        final int ID_THIS_ACTIVITY=30;
+        Intent i = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        i.setType("image/*");
+        final int ACTIVITY_SELECT_IMAGE = 1234;
+        try {
+            if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                    String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                    requestPermissions(permission, ID_THIS_ACTIVITY);
+                } else {
+
+                    startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
+                }
+            }
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case 1234:
+                if (resultCode == RESULT_OK) {
+                    Uri selectedImage = data.getData();
+                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+                    cursor.moveToFirst();
+
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String filePath = cursor.getString(columnIndex);
+
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+
+                    cursor.close();
+                    yourSelectedImage = BitmapFactory.decodeFile(filePath, options);
+                    Cameras.get(pic).setImageBitmap(yourSelectedImage);
+
+
+
+                }
+        }
+    }
+
+
+
+    private void init()
+    {
+        title=(TextView)findViewById(R.id.title) ;
+        select=(TextView)findViewById(R.id.select) ;
+        fiveTimes=(TextView)findViewById(R.id.fivetimes) ;
+        Group=(EditText)findViewById(R.id.T1);
+        Title=(EditText)findViewById(R.id.T2);
+        Type=(EditText)findViewById(R.id.T3);
+        Gheimat=(EditText)findViewById(R.id.T4);
+        Tozihat=(EditText)findViewById(R.id.T5);
+        location=(EditText)findViewById(R.id.T6);
+
+        map_img=(ImageView)findViewById(R.id.map_img);
+
+        send=(Button)findViewById(R.id.send);
+        cam1=(ImageView)findViewById(R.id.c1);
+        cam2=findViewById(R.id.c2);
+        cam3=findViewById(R.id.c3);
+        cam4=findViewById(R.id.c4);
+        cam5=findViewById(R.id.c5);
+        rules=(CheckBox)findViewById(R.id.rule);
+
+
+        Cameras=new ArrayList<ImageView>(5);
+        Cameras.add(cam1);
+        Cameras.add(cam2);
+        Cameras.add(cam3);
+        Cameras.add(cam4);
+        Cameras.add(cam5);
+
+    }
+
+
+    ///network
+    void SabtAgahi_other__SEND(String Group,String Title,String Type,String Gheimat,String Tozihat,String location)
+    {
+
+    }
+
 }

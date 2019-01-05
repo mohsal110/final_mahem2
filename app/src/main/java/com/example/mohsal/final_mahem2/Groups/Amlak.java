@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mohsal.final_mahem2.R;
@@ -12,21 +13,13 @@ import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
 public class Amlak extends AppCompatActivity {
 Button home_sell,home_rent,office_sell,office_rent,aghd,other;
+TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_amlak);
 
-
-
-
-        home_sell=(Button)findViewById(R.id.btn1);
-        home_rent=(Button)findViewById(R.id.btn2);
-        office_sell=(Button)findViewById(R.id.btn3);
-        office_rent=(Button)findViewById(R.id.btn4);
-        aghd=(Button)findViewById(R.id.btn5);
-        other=(Button)findViewById(R.id.btn6);
-
+        init();
 
 
         home_sell.setOnClickListener(new View.OnClickListener() {
@@ -79,5 +72,19 @@ Button home_sell,home_rent,office_sell,office_rent,aghd,other;
             i.putExtra("id",Id);
             startActivity(i);
         }
+    }
+
+    private void init()
+    {
+
+        title=(TextView)findViewById(R.id.title);
+        home_sell=(Button)findViewById(R.id.btn1);
+        home_rent=(Button)findViewById(R.id.btn2);
+        office_sell=(Button)findViewById(R.id.btn3);
+        office_rent=(Button)findViewById(R.id.btn4);
+        aghd=(Button)findViewById(R.id.btn5);
+        other=(Button)findViewById(R.id.btn6);
+
+
     }
 }

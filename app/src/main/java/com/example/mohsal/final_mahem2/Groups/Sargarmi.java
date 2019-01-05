@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mohsal.final_mahem2.R;
@@ -11,23 +12,14 @@ import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
 public class Sargarmi extends AppCompatActivity {
 Button cycle,sport,travel,asbab_bazi,music,book,pet,other;
+    TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sargarmi);
 
+        init();
 
-
-
-
-        cycle=(Button)findViewById(R.id.btn1);
-        sport=(Button)findViewById(R.id.btn2);
-        travel=(Button)findViewById(R.id.btn3);
-        asbab_bazi=(Button)findViewById(R.id.btn4);
-        music=(Button)findViewById(R.id.btn5);
-        book=(Button)findViewById(R.id.btn6);
-        pet=(Button)findViewById(R.id.btn7);
-        other=(Button)findViewById(R.id.btn8);
 
         music.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,4 +62,16 @@ Button cycle,sport,travel,asbab_bazi,music,book,pet,other;
         }
     }
 
+    private void init()
+    {
+        title=(TextView)findViewById(R.id.title);
+        cycle=(Button)findViewById(R.id.btn1);
+        sport=(Button)findViewById(R.id.btn2);
+        travel=(Button)findViewById(R.id.btn3);
+        asbab_bazi=(Button)findViewById(R.id.btn4);
+        music=(Button)findViewById(R.id.btn5);
+        book=(Button)findViewById(R.id.btn6);
+        pet=(Button)findViewById(R.id.btn7);
+        other=(Button)findViewById(R.id.btn8);
+    }
 }

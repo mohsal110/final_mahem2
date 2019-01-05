@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mohsal.final_mahem2.R;
@@ -12,26 +13,20 @@ import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
 public class Tajhizat_tajhizat extends AppCompatActivity {
 Button shop,burbershop,office,industry,cofe,other;
+    TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tajhizat_tajhizat);
 
 
+        init();
 
-
-
-        shop=(Button)findViewById(R.id.btn1);
         shop.setOnClickListener(new IntentClick("111"));
-        burbershop=(Button)findViewById(R.id.btn2);
         burbershop.setOnClickListener(new IntentClick("112"));
-        office=(Button)findViewById(R.id.btn3);
         office.setOnClickListener(new IntentClick("113"));
-        industry=(Button)findViewById(R.id.btn4);
         industry.setOnClickListener(new IntentClick("114"));
-        cofe=(Button)findViewById(R.id.btn5);
         cofe.setOnClickListener(new IntentClick("115"));
-        other=(Button)findViewById(R.id.btn6);
         other.setOnClickListener(new IntentClick("116"));
 
         Toast.makeText(this, getLocalClassName().toString() + "\nNiky", Toast.LENGTH_LONG).show();
@@ -52,4 +47,15 @@ Button shop,burbershop,office,industry,cofe,other;
         }
     }
 
+    private void init()
+    {
+        title=(TextView)findViewById(R.id.title);
+        shop=(Button)findViewById(R.id.btn1);
+        burbershop=(Button)findViewById(R.id.btn2);
+        office=(Button)findViewById(R.id.btn3);
+        industry=(Button)findViewById(R.id.btn4);
+        cofe=(Button)findViewById(R.id.btn5);
+        other=(Button)findViewById(R.id.btn6);
+
+    }
 }

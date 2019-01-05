@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mohsal.final_mahem2.R;
@@ -12,6 +13,7 @@ import com.example.mohsal.final_mahem2.Search_Filter.Ads;
 
 public class Khadamat extends AppCompatActivity {
 Button pazirayi,beauty,clean,asbab_keshi,nurse,decor,repair,teach,computer,translate,maali,graphic,other;
+    TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,20 +21,7 @@ Button pazirayi,beauty,clean,asbab_keshi,nurse,decor,repair,teach,computer,trans
 
 
 
-
-        pazirayi=(Button)findViewById(R.id.btn1);
-        beauty=(Button)findViewById(R.id.btn2);
-        clean=(Button)findViewById(R.id.btn3);
-        asbab_keshi=(Button)findViewById(R.id.btn4);
-        nurse=(Button)findViewById(R.id.btn5);
-        decor=(Button)findViewById(R.id.btn6);
-        repair=(Button)findViewById(R.id.btn7);
-        teach=(Button)findViewById(R.id.btn8);
-        computer=(Button)findViewById(R.id.btn9);
-        translate=(Button)findViewById(R.id.btn10);
-        maali=(Button)findViewById(R.id.btn11);
-        graphic=(Button)findViewById(R.id.btn12);
-        other=(Button)findViewById(R.id.btn13);
+        init();
 
         teach.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,4 +73,22 @@ Button pazirayi,beauty,clean,asbab_keshi,nurse,decor,repair,teach,computer,trans
         }
     }
 
+    private void init()
+    {
+        title=(TextView)findViewById(R.id.title);
+        pazirayi=(Button)findViewById(R.id.btn1);
+        beauty=(Button)findViewById(R.id.btn2);
+        clean=(Button)findViewById(R.id.btn3);
+        asbab_keshi=(Button)findViewById(R.id.btn4);
+        nurse=(Button)findViewById(R.id.btn5);
+        decor=(Button)findViewById(R.id.btn6);
+        repair=(Button)findViewById(R.id.btn7);
+        teach=(Button)findViewById(R.id.btn8);
+        computer=(Button)findViewById(R.id.btn9);
+        translate=(Button)findViewById(R.id.btn10);
+        maali=(Button)findViewById(R.id.btn11);
+        graphic=(Button)findViewById(R.id.btn12);
+        other=(Button)findViewById(R.id.btn13);
+
+    }
 }

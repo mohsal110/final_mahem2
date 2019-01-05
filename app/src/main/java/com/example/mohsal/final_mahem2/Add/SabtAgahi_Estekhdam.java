@@ -30,8 +30,7 @@ import java.util.ArrayList;
 
 public class SabtAgahi_Estekhdam extends AppCompatActivity {
 
-    EditText Group,Title,EducationLevel,Gharardad,Tozihat,call,location
-            ,PhoneNum,Email;
+    EditText Group,Title,EducationLevel,Gharardad,Tozihat,call,location,PhoneNum,Email;
     View CallLayout,EducationLayout,GharardadLayout;
     TextView Ed_1,Ed_2,Ed_3,Ed_4,Ed_5,Ed_6,Gh_1,Gh_2,Gh_3,Gh_4;
     CheckBox rules,chat,email_check;
@@ -41,6 +40,7 @@ public class SabtAgahi_Estekhdam extends AppCompatActivity {
     PopupWindow Ed_Layout,Call_Layout,Gh_Layout;
     ArrayList<ImageView> Cameras;
     ImageView map_img;
+    TextView title,select,fiveTimes;
     private String searchingLocation;
 
     int pic=0;
@@ -51,32 +51,7 @@ public class SabtAgahi_Estekhdam extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sabt_agahi__estekhdam);
 
-
-        Group=(EditText)findViewById(R.id.T1);
-        Title=(EditText)findViewById(R.id.T2);
-        EducationLevel=(EditText)findViewById(R.id.T3);
-        Gharardad=(EditText)findViewById(R.id.T4);
-        Tozihat=(EditText)findViewById(R.id.T5);
-        call=(EditText)findViewById(R.id.T6);
-        location=(EditText)findViewById(R.id.T7);
-
-        map_img=(ImageView)findViewById(R.id.map_img);
-
-        send=(Button)findViewById(R.id.send);
-        cam1=(ImageView)findViewById(R.id.c1);
-        cam2=(ImageView)findViewById(R.id.c2);
-        cam3=(ImageView)findViewById(R.id.c3);
-        cam4=(ImageView)findViewById(R.id.c4);
-        cam5=(ImageView)findViewById(R.id.c5);
-        rules=(CheckBox)findViewById(R.id.rule);
-
-
-        Cameras=new ArrayList<ImageView>(5);
-        Cameras.add(cam1);
-        Cameras.add(cam2);
-        Cameras.add(cam3);
-        Cameras.add(cam4);
-        Cameras.add(cam5);
+       init();
 
         for(final ImageView item:Cameras)
         {item.setImageResource(R.drawable.icons88);
@@ -146,6 +121,9 @@ public class SabtAgahi_Estekhdam extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SabtAgahi_Estekhdam__SEND(Group.getText().toString(),Title.getText().toString(),EducationLevel.getText().toString(),
+                        Gharardad.getText().toString(),Tozihat.getText().toString(),call.getText().toString(),location.getText().toString(),
+                        PhoneNum.getText().toString(),Email.getText().toString());
                 tt("ارسال شد.");
             }
         });
@@ -340,5 +318,46 @@ public class SabtAgahi_Estekhdam extends AppCompatActivity {
 
                 }
         }
+    }
+
+    private void init()
+    {
+        title=(TextView)findViewById(R.id.title) ;
+        select=(TextView)findViewById(R.id.select) ;
+        fiveTimes=(TextView)findViewById(R.id.fivetimes) ;
+        Group=(EditText)findViewById(R.id.T1);
+        Title=(EditText)findViewById(R.id.T2);
+        EducationLevel=(EditText)findViewById(R.id.T3);
+        Gharardad=(EditText)findViewById(R.id.T4);
+        Tozihat=(EditText)findViewById(R.id.T5);
+        call=(EditText)findViewById(R.id.T6);
+        location=(EditText)findViewById(R.id.T7);
+
+        map_img=(ImageView)findViewById(R.id.map_img);
+
+        send=(Button)findViewById(R.id.send);
+        cam1=(ImageView)findViewById(R.id.c1);
+        cam2=(ImageView)findViewById(R.id.c2);
+        cam3=(ImageView)findViewById(R.id.c3);
+        cam4=(ImageView)findViewById(R.id.c4);
+        cam5=(ImageView)findViewById(R.id.c5);
+        rules=(CheckBox)findViewById(R.id.rule);
+
+
+        Cameras=new ArrayList<ImageView>(5);
+        Cameras.add(cam1);
+        Cameras.add(cam2);
+        Cameras.add(cam3);
+        Cameras.add(cam4);
+        Cameras.add(cam5);
+
+    }
+
+
+    ////Network
+    void SabtAgahi_Estekhdam__SEND(String Group,String Title,String EducationLevel,String Gharardad,String Tozihat
+            ,String call,String location,String PhoneNum,String Email)
+    {
+
     }
 }

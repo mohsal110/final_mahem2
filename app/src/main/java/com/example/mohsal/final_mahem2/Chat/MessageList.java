@@ -55,6 +55,7 @@ public class MessageList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_list);
 
+        init();
 
         chatModels=new ArrayList<>();
         list=(ListView)findViewById(R.id.message_list);
@@ -122,6 +123,12 @@ public class MessageList extends AppCompatActivity {
 
 
         
+        }
+
+        private  void init()
+        {
+            Name=(TextView)findViewById(R.id.Name);
+            MessageText=(EditText)findViewById(R.id.MessageText);
         }
     }
 
